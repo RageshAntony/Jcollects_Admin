@@ -3,6 +3,7 @@ import 'package:admin/data/repo/auth_repo.dart';
 import 'package:admin/data/repo/cable_repo.dart';
 import 'package:built_collection/src/list.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../../constants.dart' as Constants;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
@@ -167,9 +168,20 @@ class LoginView extends HookConsumerWidget {
   }
   Widget _submitButton(BuildContext context, AuthController controller) {
     return InkWell(
-      onTap: () {
+      onTap: () async {
         if (_formKey.currentState?.validate() == true && controller.isLoading == false) {
-          controller.adminLogin();
+         final login = await controller.adminLogin();
+         if(login == null || !login ) {
+           Fluttertoast.showToast(
+               msg: "Wrong mobile or password",
+               toastLength: Toast.LENGTH_LONG,
+               gravity: ToastGravity.CENTER,
+               timeInSecForIosWeb: 5,
+               backgroundColor: Colors.red,
+               textColor: Colors.white,
+               fontSize: 18.0
+           );
+         }
        }
         },
       child: Container(
@@ -466,14 +478,14 @@ class AuthController extends ChangeNotifier{
 
   }
 
-  adminLogin() async {
+  Future<bool?> adminLogin() async {
     isLoading = true;
     print("LOGIN_ADMIN Startong");
     final resp = await authRepo.adminLogin(phoneController.text, passController.text);
-    print ("LOGIN_ADMIN ${resp.data?.first.ph_no}");
+    print ("LOGIN_ADMIN ${resp.data?.isNotEmpty}");
     isLoading = false;
     isLoggedIn = resp.data?.isNotEmpty == true ? 1 : 0;
-
+    return resp.data?.isNotEmpty;
   }
 
   get isLoggedIn => _isLoggedIn;

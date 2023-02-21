@@ -24,8 +24,6 @@ class MainController extends ChangeNotifier {
 
   var _payType = "gpay";
 
-  GadminFeeData_cable_subscription_fee? fees;
-
   get payType => _payType;
 
   set payType(value) {
@@ -135,7 +133,7 @@ class MainController extends ChangeNotifier {
     isFeeLoading = true;
     final fee = await cableRepo.getSubFee();
     adfees = fee.data;
-    print ("FEES_ADMIN $fees");
+    print ("FEES_ADMIN $adfees");
     isFeeLoading = false;
 
   }
