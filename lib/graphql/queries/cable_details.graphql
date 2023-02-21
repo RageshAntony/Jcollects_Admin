@@ -1,0 +1,348 @@
+query CableCustomers($belongsTo: Int) {
+    cable_customers_table(where: {belongs_to: {_eq: $belongsTo}}, order_by: {name: asc}) {
+
+        ...cableCustomer
+    }
+}
+
+query cablePlans($cableId: Int) {
+    cable_plan(where: {cable_id: {_eq: $cableId}}) {
+        desc
+        fees
+        name
+        plan_id
+    }
+}
+query custPayments($user_id: Int, $cable_id: Int) {
+    payments(where: {user_id: {_eq: $user_id}, cable_id: {_eq: $cable_id}}, order_by: {paid_on: desc}) {
+        user_id
+        id
+        date
+        trans_id
+        paid_on
+        cable_customers_table {
+            ...cableCustomer
+        }
+        collector {
+            address
+            belongs_to
+            collec_id
+            device_token
+            email
+            isAdmin
+            mob_no
+            name
+        }
+    }
+}
+
+query getPaymentsByQuery($collected_by: payments_bool_exp ) {
+    payments(where: $collected_by) {
+        cable_id
+        date
+        id
+        trans_id
+        user_id
+        paid_on
+
+        collector {
+            address
+            belongs_to
+            collec_id
+            device_token
+            email
+            isAdmin
+            mob_no
+            name
+        }
+    }
+}
+
+query getPayments($cableId: Int ) {
+    payments(where: {cable_id: {_eq: $cableId}}, order_by: {paid_on: desc}) {
+        cable_id
+        date
+        id
+        trans_id
+        user_id
+        paid_on
+        cable_customers_table {
+            ...cableCustomer
+        }
+        collector {
+            address
+            belongs_to
+            collec_id
+            device_token
+            email
+            isAdmin
+            mob_no
+            name
+        }
+    }
+}
+
+
+fragment cableCustomer on cable_customers_table {
+    address
+    belongs_to
+    desc
+    name
+    paid_month
+    phone_number
+    user_id
+    price
+
+}
+
+query getPaymentsByDateAfter($cableId: Int, $startMonth: date) {
+    payments(where: {paid_on: {_gte: $startMonth}, cable_id: {_eq: $cableId}}) {
+        cable_id
+        date
+        id
+        trans_id
+        user_id
+        paid_on
+        cable_customers_table {
+            ...cableCustomer
+        }
+        collector {
+            address
+            belongs_to
+            collec_id
+            device_token
+            email
+            isAdmin
+            mob_no
+            name
+        }
+    }
+}
+
+query getPaymentsByDateBetween($cableId: Int, $startMonth: timestamptz, $endMonth: timestamptz ) {
+    payments(where: {date: {_gte: $startMonth, _lte: $endMonth}, cable_id: {_eq: $cableId} }) {
+        cable_id
+        date
+        id
+        trans_id
+        user_id
+        paid_on
+        cable_customers_table {
+            ...cableCustomer
+        }
+        collector {
+            address
+            belongs_to
+            collec_id
+            device_token
+            email
+            isAdmin
+            mob_no
+            name
+        }
+    }
+}
+
+query paymentPending($_neq: timestamptz ) {
+    cable_customers_table(where: {paid_month: {_neq: $_neq}}) {
+        address
+        name
+    }
+}
+
+query getNotifications($cable_id: Int ) {
+    notifications(where: {cable_id: {_eq: $cable_id}}) {
+        pay_id
+        not_id
+        isRead
+        payment {
+            cable_customers_table {
+                name
+                user_id
+                price
+            }
+            collector {
+                name
+                collec_id
+            }
+            date
+            id
+            paid_on
+            trans_id
+            user_id
+        }
+    }
+}
+
+
+query getPaymentsToday($cableId: Int, $today: date ) {
+    payments(where: {paid_on: {_eq: $today}, cable_id: {_eq: $cableId}}) {
+        cable_id
+        date
+        id
+        trans_id
+        user_id
+        paid_on
+        collected_by
+        collector {
+            address
+            belongs_to
+            collec_id
+            device_token
+            email
+            isAdmin
+            mob_no
+            name
+        }
+        cable_customers_table {
+            ...cableCustomer
+        }
+    }
+}
+
+query AllCableOpr {
+    cable_opr(order_by: {paid_month: desc_nulls_last}) {
+        address
+        cable_name
+        email
+        password
+        phone_no
+        user_id
+        isActive
+        paid_month
+    }
+}
+
+
+query collectorLogin($mob_no: String , $password: String ) {
+    collectors(where: {mob_no: {_eq: $mob_no}, password: {_eq: $password}}) {
+        address
+        belongs_to
+        collec_id
+        device_token
+        email
+        isAdmin
+        mob_no
+        name
+        cable_opr {
+            address
+            cable_name
+            email
+            password
+            phone_no
+            isActive
+            paid_month
+            user_id
+        }
+    }
+}
+
+query allCollectors($belongs_to: Int ) {
+    collectors(where: {belongs_to: {_eq: $belongs_to}}) {
+        address
+        belongs_to
+        collec_id
+        isAdmin
+        mob_no
+        name
+        email
+        cable_opr {
+            address
+            cable_name
+            email
+            password
+            phone_no
+            user_id
+            isActive
+            paid_month
+        }
+    }
+}
+
+query wholeCollectors {
+    collectors {
+        address
+        belongs_to
+        collec_id
+        isAdmin
+        mob_no
+        name
+        email
+        cable_opr {
+            address
+            cable_name
+            email
+            password
+            phone_no
+            user_id
+            isActive
+            paid_month
+        }
+    }
+}
+mutation enableSubscription($user_id: Int!) {
+    update_cable_opr_by_pk(pk_columns: {user_id: $user_id}, _set: {isActive: true}) {
+        address
+        cable_name
+        email
+        isActive
+        paid_month
+        password
+        phone_no
+        user_id
+    }
+}
+query getCableByID($user_id: Int!) {
+    cable_opr_by_pk(user_id: $user_id) {
+        address
+        cable_name
+        email
+        password
+        phone_no
+        isActive
+        paid_month
+        user_id
+    }
+}
+
+query cableSubscriptionsByCableId($cable_id: Int) {
+    cable_subscriptions(where: {cable_id: {_eq: $cable_id}}) {
+        acc_ph_upi
+        cable_id
+        date
+        id
+        paid_on
+        trans_id
+        type
+        cable_subscription_fee {
+            date
+            fee
+            id
+        }
+    }
+}
+
+query cableSubscriptionsAll {
+    cable_subscriptions {
+        acc_ph_upi
+        cable_id
+        date
+        id
+        paid_on
+        trans_id
+        type
+        cable_subscription_fee {
+            date
+            fee
+            id
+        }
+    }
+}
+
+query adminFee {
+    cable_subscription_fee {
+        date
+        fee
+        id
+    }
+}

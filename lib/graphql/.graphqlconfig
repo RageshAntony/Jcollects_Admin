@@ -1,0 +1,16 @@
+{
+  "name": "JCollects GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://jcollects.hasura.app/v1/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "x-hasura-admin-secret" : "Vm7Of9pez5al81CMNyhRJzkfRh802GMTBwb9S4J31ZRhqcdvnfngrZlkxCYhN0Qj"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+mutation addCablePlan($cable_id: Int, $desc: String, $fees: Int, $name: String) {
+    insert_cable_plan_one(object: {cable_id: $cable_id, desc: $desc, fees: $fees, name: $name}) {
+        cable_id
+        desc
+        fees
+        name
+        plan_id
+    }
+}
+
+mutation addCableCustomer($price: Int , $phone_number: String , $name: String , $desc: String , $belongs_to: Int , $address: String ) {
+    insert_cable_customers_table(objects: {address: $address, belongs_to: $belongs_to, desc: $desc, name: $name, phone_number: $phone_number, price: $price}) {
+        returning {
+            user_id
+            price
+            phone_number
+            paid_month
+            name
+            desc
+            belongs_to
+            address
+        }
+    }
+}
+
+mutation updatePayment($date: timestamptz, $cable_id: Int, $trans_id: Int, $user_id: Int, $collected_by: Int, $paid_on: date) {
+    insert_payments(objects: {date: $date, trans_id: $trans_id, user_id: $user_id, cable_id: $cable_id, collected_by: $collected_by, paid_on: $paid_on}) {
+        returning {
+            cable_id
+            date
+            id
+            trans_id
+            user_id
+        }
+    }
+    update_cable_customers_table(where: {user_id: {_eq: $user_id}, belongs_to: {_eq: $cable_id}}, _set: {paid_month: $date}) {
+        returning {
+            paid_month
+        }
+    }
+}
+
+mutation addNotification($cable_id: Int , $pay_id: Int) {
+    insert_notifications_one(object: {cable_id: $cable_id, pay_id: $pay_id}) {
+        not_id
+        pay_id
+        cable_id
+    }
+}
+
+mutation updateCollectors($collec_id: Int! , $address: String , $email: String , $mob_no: String , $name: String ) {
+    update_collectors_by_pk(pk_columns: {collec_id: $collec_id}, _set: {address: $address,  email: $email, mob_no: $mob_no, name: $name}) {
+        address
+        belongs_to
+        cable_opr {
+            address
+            cable_name
+            email
+            password
+            phone_no
+            user_id
+        }
+        collec_id
+        device_token
+        email
+        isAdmin
+        mob_no
+        name
+        password
+    }
+}
+
+mutation addAdminFee( $fee: Int ) {
+    insert_cable_subscription_fee_one(object: {fee: $fee}) {
+        date
+        fee
+        id
+    }
+}

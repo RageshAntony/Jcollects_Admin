@@ -1,0 +1,83 @@
+mutation createCableProvider($address: String , $cable_name: String, $email: String = "", $password: String , $phone_no: String ) {
+    insert_cable_opr_one(object: {address: $address, cable_name: $cable_name, email: $email, password: $password, phone_no: $phone_no}) {
+        user_id
+        cable_name
+        phone_no
+        address
+        email
+
+    }
+}
+
+mutation addCollector($address: String, $belongs_to: Int, $isAdmin: Boolean, $mob_no: String, $name: String, $password: String, $email: String = "") {
+    insert_collectors_one(object: {address: $address, belongs_to: $belongs_to, isAdmin: $isAdmin, mob_no: $mob_no, name: $name, password: $password, email: $email}) {
+        address
+        belongs_to
+        collec_id
+        isAdmin
+        mob_no
+        name
+        device_token
+        cable_opr {
+            user_id
+            cable_name
+            phone_no
+            address
+            email
+        }
+    }
+}
+
+
+
+
+query allCables {
+    cable_opr {
+        address
+        cable_name
+        email
+        password
+        phone_no
+        user_id
+        isActive
+        paid_month
+    }
+}
+
+query adminLogin($phoneNo: String, $pass: String) {
+  admin_panel_user(where: {ph_no: {_eq: $phoneNo}, pass: {_eq: $pass}}) {
+    id
+    pass
+    ph_no
+    email
+    type
+  }
+}
+
+query forgetPass($phoneNo: String) {
+  admin_panel_user(where: {ph_no: {_eq: $phoneNo} }) {
+    id
+    pass
+    ph_no
+    type
+    email
+  }
+}
+
+
+
+mutation addAdminUser($email: String , $pass: String , $ph_no: String ) {
+  insert_admin_panel_user_one(object: {email: $email, pass: $pass, ph_no: $ph_no, type: 0}) {
+    email
+    id
+    pass
+    ph_no
+    type
+  }
+}
+
+query sendEmail($email: String, $password: String) {
+  sendEmail(arg1: {email: $email, password: $password}) {
+    response
+  }
+}

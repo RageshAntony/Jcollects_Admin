@@ -1,0 +1,5133 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: query_root
+    mutation: mutation_root
+    subscription: subscription_root
+}
+
+"whether this query should be cached (Hasura Cloud only)"
+directive @cached(
+        "refresh the cache entry"
+        refresh: Boolean! = false, 
+        "measured in seconds"
+        ttl: Int! = 60
+    ) on QUERY
+
+type SampleOutput {
+    response: String!
+}
+
+"    email: String     id: Int!     pass: String!     ph_no: String!     type: Int!"
+type admin_panel_user {
+    email: String
+    id: Int!
+    pass: String!
+    ph_no: String!
+    type: Int!
+}
+
+"aggregated selection of \"admin_panel_user\""
+type admin_panel_user_aggregate {
+    aggregate: admin_panel_user_aggregate_fields
+    nodes: [admin_panel_user!]!
+}
+
+"aggregate fields of \"admin_panel_user\""
+type admin_panel_user_aggregate_fields {
+    avg: admin_panel_user_avg_fields
+    count(columns: [admin_panel_user_select_column!], distinct: Boolean): Int!
+    max: admin_panel_user_max_fields
+    min: admin_panel_user_min_fields
+    stddev: admin_panel_user_stddev_fields
+    stddev_pop: admin_panel_user_stddev_pop_fields
+    stddev_samp: admin_panel_user_stddev_samp_fields
+    sum: admin_panel_user_sum_fields
+    var_pop: admin_panel_user_var_pop_fields
+    var_samp: admin_panel_user_var_samp_fields
+    variance: admin_panel_user_variance_fields
+}
+
+"aggregate avg on columns"
+type admin_panel_user_avg_fields {
+    id: Float
+    type: Float
+}
+
+"aggregate max on columns"
+type admin_panel_user_max_fields {
+    email: String
+    id: Int
+    pass: String
+    ph_no: String
+    type: Int
+}
+
+"aggregate min on columns"
+type admin_panel_user_min_fields {
+    email: String
+    id: Int
+    pass: String
+    ph_no: String
+    type: Int
+}
+
+"response of any mutation on the table \"admin_panel_user\""
+type admin_panel_user_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [admin_panel_user!]!
+}
+
+"aggregate stddev on columns"
+type admin_panel_user_stddev_fields {
+    id: Float
+    type: Float
+}
+
+"aggregate stddev_pop on columns"
+type admin_panel_user_stddev_pop_fields {
+    id: Float
+    type: Float
+}
+
+"aggregate stddev_samp on columns"
+type admin_panel_user_stddev_samp_fields {
+    id: Float
+    type: Float
+}
+
+"aggregate sum on columns"
+type admin_panel_user_sum_fields {
+    id: Int
+    type: Int
+}
+
+"aggregate var_pop on columns"
+type admin_panel_user_var_pop_fields {
+    id: Float
+    type: Float
+}
+
+"aggregate var_samp on columns"
+type admin_panel_user_var_samp_fields {
+    id: Float
+    type: Float
+}
+
+"aggregate variance on columns"
+type admin_panel_user_variance_fields {
+    id: Float
+    type: Float
+}
+
+"Store cable customers "
+type cable_customers_table {
+    address: String!
+    belongs_to: Int!
+    "An object relationship"
+    cable_opr: cable_opr!
+    desc: String!
+    joined_on: timestamptz
+    name: String!
+    paid_month: timestamptz
+    "An array relationship"
+    payments(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): [payments!]!
+    "An aggregate relationship"
+    payments_aggregate(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): payments_aggregate!
+    phone_number: String!
+    price: Int
+    user_id: Int!
+}
+
+"aggregated selection of \"cable_customers_table\""
+type cable_customers_table_aggregate {
+    aggregate: cable_customers_table_aggregate_fields
+    nodes: [cable_customers_table!]!
+}
+
+"aggregate fields of \"cable_customers_table\""
+type cable_customers_table_aggregate_fields {
+    avg: cable_customers_table_avg_fields
+    count(columns: [cable_customers_table_select_column!], distinct: Boolean): Int!
+    max: cable_customers_table_max_fields
+    min: cable_customers_table_min_fields
+    stddev: cable_customers_table_stddev_fields
+    stddev_pop: cable_customers_table_stddev_pop_fields
+    stddev_samp: cable_customers_table_stddev_samp_fields
+    sum: cable_customers_table_sum_fields
+    var_pop: cable_customers_table_var_pop_fields
+    var_samp: cable_customers_table_var_samp_fields
+    variance: cable_customers_table_variance_fields
+}
+
+"aggregate avg on columns"
+type cable_customers_table_avg_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"aggregate max on columns"
+type cable_customers_table_max_fields {
+    address: String
+    belongs_to: Int
+    desc: String
+    joined_on: timestamptz
+    name: String
+    paid_month: timestamptz
+    phone_number: String
+    price: Int
+    user_id: Int
+}
+
+"aggregate min on columns"
+type cable_customers_table_min_fields {
+    address: String
+    belongs_to: Int
+    desc: String
+    joined_on: timestamptz
+    name: String
+    paid_month: timestamptz
+    phone_number: String
+    price: Int
+    user_id: Int
+}
+
+"response of any mutation on the table \"cable_customers_table\""
+type cable_customers_table_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [cable_customers_table!]!
+}
+
+"aggregate stddev on columns"
+type cable_customers_table_stddev_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type cable_customers_table_stddev_pop_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type cable_customers_table_stddev_samp_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"aggregate sum on columns"
+type cable_customers_table_sum_fields {
+    belongs_to: Int
+    price: Int
+    user_id: Int
+}
+
+"aggregate var_pop on columns"
+type cable_customers_table_var_pop_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"aggregate var_samp on columns"
+type cable_customers_table_var_samp_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"aggregate variance on columns"
+type cable_customers_table_variance_fields {
+    belongs_to: Float
+    price: Float
+    user_id: Float
+}
+
+"Table contains the accounts of main cable operators"
+type cable_opr {
+    address: String!
+    "An array relationship"
+    cable_customers_tables(
+        "distinct select on columns"
+        distinct_on: [cable_customers_table_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_customers_table_order_by!], 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): [cable_customers_table!]!
+    "An aggregate relationship"
+    cable_customers_tables_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_customers_table_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_customers_table_order_by!], 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): cable_customers_table_aggregate!
+    cable_name: String!
+    "An array relationship"
+    cable_subscriptions(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): [cable_subscriptions!]!
+    "An aggregate relationship"
+    cable_subscriptions_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): cable_subscriptions_aggregate!
+    "An array relationship"
+    collectors(
+        "distinct select on columns"
+        distinct_on: [collectors_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [collectors_order_by!], 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): [collectors!]!
+    "An aggregate relationship"
+    collectors_aggregate(
+        "distinct select on columns"
+        distinct_on: [collectors_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [collectors_order_by!], 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): collectors_aggregate!
+    email: String
+    isActive: Boolean
+    "An array relationship"
+    notifications(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): [notifications!]!
+    "An aggregate relationship"
+    notifications_aggregate(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): notifications_aggregate!
+    paid_month: timestamptz
+    password: String!
+    "An array relationship"
+    payments(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): [payments!]!
+    "An aggregate relationship"
+    payments_aggregate(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): payments_aggregate!
+    phone_no: String!
+    user_id: Int!
+}
+
+"aggregated selection of \"cable_opr\""
+type cable_opr_aggregate {
+    aggregate: cable_opr_aggregate_fields
+    nodes: [cable_opr!]!
+}
+
+"aggregate fields of \"cable_opr\""
+type cable_opr_aggregate_fields {
+    avg: cable_opr_avg_fields
+    count(columns: [cable_opr_select_column!], distinct: Boolean): Int!
+    max: cable_opr_max_fields
+    min: cable_opr_min_fields
+    stddev: cable_opr_stddev_fields
+    stddev_pop: cable_opr_stddev_pop_fields
+    stddev_samp: cable_opr_stddev_samp_fields
+    sum: cable_opr_sum_fields
+    var_pop: cable_opr_var_pop_fields
+    var_samp: cable_opr_var_samp_fields
+    variance: cable_opr_variance_fields
+}
+
+"aggregate avg on columns"
+type cable_opr_avg_fields {
+    user_id: Float
+}
+
+"aggregate max on columns"
+type cable_opr_max_fields {
+    address: String
+    cable_name: String
+    email: String
+    paid_month: timestamptz
+    password: String
+    phone_no: String
+    user_id: Int
+}
+
+"aggregate min on columns"
+type cable_opr_min_fields {
+    address: String
+    cable_name: String
+    email: String
+    paid_month: timestamptz
+    password: String
+    phone_no: String
+    user_id: Int
+}
+
+"response of any mutation on the table \"cable_opr\""
+type cable_opr_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [cable_opr!]!
+}
+
+"aggregate stddev on columns"
+type cable_opr_stddev_fields {
+    user_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type cable_opr_stddev_pop_fields {
+    user_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type cable_opr_stddev_samp_fields {
+    user_id: Float
+}
+
+"aggregate sum on columns"
+type cable_opr_sum_fields {
+    user_id: Int
+}
+
+"aggregate var_pop on columns"
+type cable_opr_var_pop_fields {
+    user_id: Float
+}
+
+"aggregate var_samp on columns"
+type cable_opr_var_samp_fields {
+    user_id: Float
+}
+
+"aggregate variance on columns"
+type cable_opr_variance_fields {
+    user_id: Float
+}
+
+"table contains plans and its fee"
+type cable_plan {
+    cable_id: Int!
+    desc: String
+    fees: Int!
+    name: String!
+    plan_id: Int!
+}
+
+"aggregated selection of \"cable_plan\""
+type cable_plan_aggregate {
+    aggregate: cable_plan_aggregate_fields
+    nodes: [cable_plan!]!
+}
+
+"aggregate fields of \"cable_plan\""
+type cable_plan_aggregate_fields {
+    avg: cable_plan_avg_fields
+    count(columns: [cable_plan_select_column!], distinct: Boolean): Int!
+    max: cable_plan_max_fields
+    min: cable_plan_min_fields
+    stddev: cable_plan_stddev_fields
+    stddev_pop: cable_plan_stddev_pop_fields
+    stddev_samp: cable_plan_stddev_samp_fields
+    sum: cable_plan_sum_fields
+    var_pop: cable_plan_var_pop_fields
+    var_samp: cable_plan_var_samp_fields
+    variance: cable_plan_variance_fields
+}
+
+"aggregate avg on columns"
+type cable_plan_avg_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"aggregate max on columns"
+type cable_plan_max_fields {
+    cable_id: Int
+    desc: String
+    fees: Int
+    name: String
+    plan_id: Int
+}
+
+"aggregate min on columns"
+type cable_plan_min_fields {
+    cable_id: Int
+    desc: String
+    fees: Int
+    name: String
+    plan_id: Int
+}
+
+"response of any mutation on the table \"cable_plan\""
+type cable_plan_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [cable_plan!]!
+}
+
+"aggregate stddev on columns"
+type cable_plan_stddev_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type cable_plan_stddev_pop_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type cable_plan_stddev_samp_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"aggregate sum on columns"
+type cable_plan_sum_fields {
+    cable_id: Int
+    fees: Int
+    plan_id: Int
+}
+
+"aggregate var_pop on columns"
+type cable_plan_var_pop_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"aggregate var_samp on columns"
+type cable_plan_var_samp_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"aggregate variance on columns"
+type cable_plan_variance_fields {
+    cable_id: Float
+    fees: Float
+    plan_id: Float
+}
+
+"Stores cable fees per month . Last is latest"
+type cable_subscription_fee {
+    "An array relationship"
+    cable_subscriptions(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): [cable_subscriptions!]!
+    "An aggregate relationship"
+    cable_subscriptions_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): cable_subscriptions_aggregate!
+    date: date!
+    fee: Int!
+    id: Int!
+}
+
+"aggregated selection of \"cable_subscription_fee\""
+type cable_subscription_fee_aggregate {
+    aggregate: cable_subscription_fee_aggregate_fields
+    nodes: [cable_subscription_fee!]!
+}
+
+"aggregate fields of \"cable_subscription_fee\""
+type cable_subscription_fee_aggregate_fields {
+    avg: cable_subscription_fee_avg_fields
+    count(columns: [cable_subscription_fee_select_column!], distinct: Boolean): Int!
+    max: cable_subscription_fee_max_fields
+    min: cable_subscription_fee_min_fields
+    stddev: cable_subscription_fee_stddev_fields
+    stddev_pop: cable_subscription_fee_stddev_pop_fields
+    stddev_samp: cable_subscription_fee_stddev_samp_fields
+    sum: cable_subscription_fee_sum_fields
+    var_pop: cable_subscription_fee_var_pop_fields
+    var_samp: cable_subscription_fee_var_samp_fields
+    variance: cable_subscription_fee_variance_fields
+}
+
+"aggregate avg on columns"
+type cable_subscription_fee_avg_fields {
+    fee: Float
+    id: Float
+}
+
+"aggregate max on columns"
+type cable_subscription_fee_max_fields {
+    date: date
+    fee: Int
+    id: Int
+}
+
+"aggregate min on columns"
+type cable_subscription_fee_min_fields {
+    date: date
+    fee: Int
+    id: Int
+}
+
+"response of any mutation on the table \"cable_subscription_fee\""
+type cable_subscription_fee_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [cable_subscription_fee!]!
+}
+
+"aggregate stddev on columns"
+type cable_subscription_fee_stddev_fields {
+    fee: Float
+    id: Float
+}
+
+"aggregate stddev_pop on columns"
+type cable_subscription_fee_stddev_pop_fields {
+    fee: Float
+    id: Float
+}
+
+"aggregate stddev_samp on columns"
+type cable_subscription_fee_stddev_samp_fields {
+    fee: Float
+    id: Float
+}
+
+"aggregate sum on columns"
+type cable_subscription_fee_sum_fields {
+    fee: Int
+    id: Int
+}
+
+"aggregate var_pop on columns"
+type cable_subscription_fee_var_pop_fields {
+    fee: Float
+    id: Float
+}
+
+"aggregate var_samp on columns"
+type cable_subscription_fee_var_samp_fields {
+    fee: Float
+    id: Float
+}
+
+"aggregate variance on columns"
+type cable_subscription_fee_variance_fields {
+    fee: Float
+    id: Float
+}
+
+"Table contains subscriptions for cable / company owners"
+type cable_subscriptions {
+    acc_ph_upi: String
+    cable_id: Int!
+    "An object relationship"
+    cable_opr: cable_opr!
+    "An object relationship"
+    cable_subscription_fee: cable_subscription_fee
+    date: timestamptz!
+    fee: Int
+    id: Int!
+    paid_on: timestamptz!
+    trans_id: String
+    type: String
+}
+
+"aggregated selection of \"cable_subscriptions\""
+type cable_subscriptions_aggregate {
+    aggregate: cable_subscriptions_aggregate_fields
+    nodes: [cable_subscriptions!]!
+}
+
+"aggregate fields of \"cable_subscriptions\""
+type cable_subscriptions_aggregate_fields {
+    avg: cable_subscriptions_avg_fields
+    count(columns: [cable_subscriptions_select_column!], distinct: Boolean): Int!
+    max: cable_subscriptions_max_fields
+    min: cable_subscriptions_min_fields
+    stddev: cable_subscriptions_stddev_fields
+    stddev_pop: cable_subscriptions_stddev_pop_fields
+    stddev_samp: cable_subscriptions_stddev_samp_fields
+    sum: cable_subscriptions_sum_fields
+    var_pop: cable_subscriptions_var_pop_fields
+    var_samp: cable_subscriptions_var_samp_fields
+    variance: cable_subscriptions_variance_fields
+}
+
+"aggregate avg on columns"
+type cable_subscriptions_avg_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"aggregate max on columns"
+type cable_subscriptions_max_fields {
+    acc_ph_upi: String
+    cable_id: Int
+    date: timestamptz
+    fee: Int
+    id: Int
+    paid_on: timestamptz
+    trans_id: String
+    type: String
+}
+
+"aggregate min on columns"
+type cable_subscriptions_min_fields {
+    acc_ph_upi: String
+    cable_id: Int
+    date: timestamptz
+    fee: Int
+    id: Int
+    paid_on: timestamptz
+    trans_id: String
+    type: String
+}
+
+"response of any mutation on the table \"cable_subscriptions\""
+type cable_subscriptions_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [cable_subscriptions!]!
+}
+
+"aggregate stddev on columns"
+type cable_subscriptions_stddev_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"aggregate stddev_pop on columns"
+type cable_subscriptions_stddev_pop_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"aggregate stddev_samp on columns"
+type cable_subscriptions_stddev_samp_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"aggregate sum on columns"
+type cable_subscriptions_sum_fields {
+    cable_id: Int
+    fee: Int
+    id: Int
+}
+
+"aggregate var_pop on columns"
+type cable_subscriptions_var_pop_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"aggregate var_samp on columns"
+type cable_subscriptions_var_samp_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"aggregate variance on columns"
+type cable_subscriptions_variance_fields {
+    cable_id: Float
+    fee: Float
+    id: Float
+}
+
+"Collectors are the ones who collect the fees"
+type collectors {
+    address: String
+    belongs_to: Int!
+    "An object relationship"
+    cable_opr: cable_opr!
+    collec_id: Int!
+    device_token: String
+    email: String
+    isAdmin: Boolean
+    mob_no: String!
+    name: String!
+    password: String!
+    "An array relationship"
+    payments(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): [payments!]!
+    "An aggregate relationship"
+    payments_aggregate(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): payments_aggregate!
+}
+
+"aggregated selection of \"collectors\""
+type collectors_aggregate {
+    aggregate: collectors_aggregate_fields
+    nodes: [collectors!]!
+}
+
+"aggregate fields of \"collectors\""
+type collectors_aggregate_fields {
+    avg: collectors_avg_fields
+    count(columns: [collectors_select_column!], distinct: Boolean): Int!
+    max: collectors_max_fields
+    min: collectors_min_fields
+    stddev: collectors_stddev_fields
+    stddev_pop: collectors_stddev_pop_fields
+    stddev_samp: collectors_stddev_samp_fields
+    sum: collectors_sum_fields
+    var_pop: collectors_var_pop_fields
+    var_samp: collectors_var_samp_fields
+    variance: collectors_variance_fields
+}
+
+"aggregate avg on columns"
+type collectors_avg_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"aggregate max on columns"
+type collectors_max_fields {
+    address: String
+    belongs_to: Int
+    collec_id: Int
+    device_token: String
+    email: String
+    mob_no: String
+    name: String
+    password: String
+}
+
+"aggregate min on columns"
+type collectors_min_fields {
+    address: String
+    belongs_to: Int
+    collec_id: Int
+    device_token: String
+    email: String
+    mob_no: String
+    name: String
+    password: String
+}
+
+"response of any mutation on the table \"collectors\""
+type collectors_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [collectors!]!
+}
+
+"aggregate stddev on columns"
+type collectors_stddev_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type collectors_stddev_pop_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type collectors_stddev_samp_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"aggregate sum on columns"
+type collectors_sum_fields {
+    belongs_to: Int
+    collec_id: Int
+}
+
+"aggregate var_pop on columns"
+type collectors_var_pop_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"aggregate var_samp on columns"
+type collectors_var_samp_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"aggregate variance on columns"
+type collectors_variance_fields {
+    belongs_to: Float
+    collec_id: Float
+}
+
+"columns and relationships of \"customer\""
+type customer {
+    email: String
+    first_name: String
+    id: Int!
+    ip_address: String
+    last_name: String
+    "An array relationship"
+    orders(
+        "distinct select on columns"
+        distinct_on: [order_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [order_order_by!], 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): [order!]!
+    "An aggregate relationship"
+    orders_aggregate(
+        "distinct select on columns"
+        distinct_on: [order_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [order_order_by!], 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): order_aggregate!
+    phone: String
+    username: String
+}
+
+"aggregated selection of \"customer\""
+type customer_aggregate {
+    aggregate: customer_aggregate_fields
+    nodes: [customer!]!
+}
+
+"aggregate fields of \"customer\""
+type customer_aggregate_fields {
+    avg: customer_avg_fields
+    count(columns: [customer_select_column!], distinct: Boolean): Int!
+    max: customer_max_fields
+    min: customer_min_fields
+    stddev: customer_stddev_fields
+    stddev_pop: customer_stddev_pop_fields
+    stddev_samp: customer_stddev_samp_fields
+    sum: customer_sum_fields
+    var_pop: customer_var_pop_fields
+    var_samp: customer_var_samp_fields
+    variance: customer_variance_fields
+}
+
+"aggregate avg on columns"
+type customer_avg_fields {
+    id: Float
+}
+
+"aggregate max on columns"
+type customer_max_fields {
+    email: String
+    first_name: String
+    id: Int
+    ip_address: String
+    last_name: String
+    phone: String
+    username: String
+}
+
+"aggregate min on columns"
+type customer_min_fields {
+    email: String
+    first_name: String
+    id: Int
+    ip_address: String
+    last_name: String
+    phone: String
+    username: String
+}
+
+"response of any mutation on the table \"customer\""
+type customer_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [customer!]!
+}
+
+"aggregate stddev on columns"
+type customer_stddev_fields {
+    id: Float
+}
+
+"aggregate stddev_pop on columns"
+type customer_stddev_pop_fields {
+    id: Float
+}
+
+"aggregate stddev_samp on columns"
+type customer_stddev_samp_fields {
+    id: Float
+}
+
+"aggregate sum on columns"
+type customer_sum_fields {
+    id: Int
+}
+
+"aggregate var_pop on columns"
+type customer_var_pop_fields {
+    id: Float
+}
+
+"aggregate var_samp on columns"
+type customer_var_samp_fields {
+    id: Float
+}
+
+"aggregate variance on columns"
+type customer_variance_fields {
+    id: Float
+}
+
+"mutation root"
+type mutation_root {
+    "delete data from the table: \"admin_panel_user\""
+    delete_admin_panel_user(
+        "filter the rows which have to be deleted"
+        where: admin_panel_user_bool_exp!
+    ): admin_panel_user_mutation_response
+    "delete single row from the table: \"admin_panel_user\""
+    delete_admin_panel_user_by_pk(id: Int!): admin_panel_user
+    "delete data from the table: \"cable_customers_table\""
+    delete_cable_customers_table(
+        "filter the rows which have to be deleted"
+        where: cable_customers_table_bool_exp!
+    ): cable_customers_table_mutation_response
+    "delete single row from the table: \"cable_customers_table\""
+    delete_cable_customers_table_by_pk(user_id: Int!): cable_customers_table
+    "delete data from the table: \"cable_opr\""
+    delete_cable_opr(
+        "filter the rows which have to be deleted"
+        where: cable_opr_bool_exp!
+    ): cable_opr_mutation_response
+    "delete single row from the table: \"cable_opr\""
+    delete_cable_opr_by_pk(user_id: Int!): cable_opr
+    "delete data from the table: \"cable_plan\""
+    delete_cable_plan(
+        "filter the rows which have to be deleted"
+        where: cable_plan_bool_exp!
+    ): cable_plan_mutation_response
+    "delete single row from the table: \"cable_plan\""
+    delete_cable_plan_by_pk(plan_id: Int!): cable_plan
+    "delete data from the table: \"cable_subscription_fee\""
+    delete_cable_subscription_fee(
+        "filter the rows which have to be deleted"
+        where: cable_subscription_fee_bool_exp!
+    ): cable_subscription_fee_mutation_response
+    "delete single row from the table: \"cable_subscription_fee\""
+    delete_cable_subscription_fee_by_pk(id: Int!): cable_subscription_fee
+    "delete data from the table: \"cable_subscriptions\""
+    delete_cable_subscriptions(
+        "filter the rows which have to be deleted"
+        where: cable_subscriptions_bool_exp!
+    ): cable_subscriptions_mutation_response
+    "delete single row from the table: \"cable_subscriptions\""
+    delete_cable_subscriptions_by_pk(id: Int!): cable_subscriptions
+    "delete data from the table: \"collectors\""
+    delete_collectors(
+        "filter the rows which have to be deleted"
+        where: collectors_bool_exp!
+    ): collectors_mutation_response
+    "delete single row from the table: \"collectors\""
+    delete_collectors_by_pk(collec_id: Int!): collectors
+    "delete data from the table: \"customer\""
+    delete_customer(
+        "filter the rows which have to be deleted"
+        where: customer_bool_exp!
+    ): customer_mutation_response
+    "delete single row from the table: \"customer\""
+    delete_customer_by_pk(id: Int!): customer
+    "delete data from the table: \"notifications\""
+    delete_notifications(
+        "filter the rows which have to be deleted"
+        where: notifications_bool_exp!
+    ): notifications_mutation_response
+    "delete single row from the table: \"notifications\""
+    delete_notifications_by_pk(not_id: Int!): notifications
+    "delete data from the table: \"order\""
+    delete_order(
+        "filter the rows which have to be deleted"
+        where: order_bool_exp!
+    ): order_mutation_response
+    "delete single row from the table: \"order\""
+    delete_order_by_pk(id: Int!): order
+    "delete data from the table: \"payments\""
+    delete_payments(
+        "filter the rows which have to be deleted"
+        where: payments_bool_exp!
+    ): payments_mutation_response
+    "delete single row from the table: \"payments\""
+    delete_payments_by_pk(id: Int!): payments
+    "insert data into the table: \"admin_panel_user\""
+    insert_admin_panel_user(
+        "the rows to be inserted"
+        objects: [admin_panel_user_insert_input!]!, 
+        "upsert condition"
+        on_conflict: admin_panel_user_on_conflict
+    ): admin_panel_user_mutation_response
+    "insert a single row into the table: \"admin_panel_user\""
+    insert_admin_panel_user_one(
+        "the row to be inserted"
+        object: admin_panel_user_insert_input!, 
+        "upsert condition"
+        on_conflict: admin_panel_user_on_conflict
+    ): admin_panel_user
+    "insert data into the table: \"cable_customers_table\""
+    insert_cable_customers_table(
+        "the rows to be inserted"
+        objects: [cable_customers_table_insert_input!]!, 
+        "upsert condition"
+        on_conflict: cable_customers_table_on_conflict
+    ): cable_customers_table_mutation_response
+    "insert a single row into the table: \"cable_customers_table\""
+    insert_cable_customers_table_one(
+        "the row to be inserted"
+        object: cable_customers_table_insert_input!, 
+        "upsert condition"
+        on_conflict: cable_customers_table_on_conflict
+    ): cable_customers_table
+    "insert data into the table: \"cable_opr\""
+    insert_cable_opr(
+        "the rows to be inserted"
+        objects: [cable_opr_insert_input!]!, 
+        "upsert condition"
+        on_conflict: cable_opr_on_conflict
+    ): cable_opr_mutation_response
+    "insert a single row into the table: \"cable_opr\""
+    insert_cable_opr_one(
+        "the row to be inserted"
+        object: cable_opr_insert_input!, 
+        "upsert condition"
+        on_conflict: cable_opr_on_conflict
+    ): cable_opr
+    "insert data into the table: \"cable_plan\""
+    insert_cable_plan(
+        "the rows to be inserted"
+        objects: [cable_plan_insert_input!]!, 
+        "upsert condition"
+        on_conflict: cable_plan_on_conflict
+    ): cable_plan_mutation_response
+    "insert a single row into the table: \"cable_plan\""
+    insert_cable_plan_one(
+        "the row to be inserted"
+        object: cable_plan_insert_input!, 
+        "upsert condition"
+        on_conflict: cable_plan_on_conflict
+    ): cable_plan
+    "insert data into the table: \"cable_subscription_fee\""
+    insert_cable_subscription_fee(
+        "the rows to be inserted"
+        objects: [cable_subscription_fee_insert_input!]!, 
+        "upsert condition"
+        on_conflict: cable_subscription_fee_on_conflict
+    ): cable_subscription_fee_mutation_response
+    "insert a single row into the table: \"cable_subscription_fee\""
+    insert_cable_subscription_fee_one(
+        "the row to be inserted"
+        object: cable_subscription_fee_insert_input!, 
+        "upsert condition"
+        on_conflict: cable_subscription_fee_on_conflict
+    ): cable_subscription_fee
+    "insert data into the table: \"cable_subscriptions\""
+    insert_cable_subscriptions(
+        "the rows to be inserted"
+        objects: [cable_subscriptions_insert_input!]!, 
+        "upsert condition"
+        on_conflict: cable_subscriptions_on_conflict
+    ): cable_subscriptions_mutation_response
+    "insert a single row into the table: \"cable_subscriptions\""
+    insert_cable_subscriptions_one(
+        "the row to be inserted"
+        object: cable_subscriptions_insert_input!, 
+        "upsert condition"
+        on_conflict: cable_subscriptions_on_conflict
+    ): cable_subscriptions
+    "insert data into the table: \"collectors\""
+    insert_collectors(
+        "the rows to be inserted"
+        objects: [collectors_insert_input!]!, 
+        "upsert condition"
+        on_conflict: collectors_on_conflict
+    ): collectors_mutation_response
+    "insert a single row into the table: \"collectors\""
+    insert_collectors_one(
+        "the row to be inserted"
+        object: collectors_insert_input!, 
+        "upsert condition"
+        on_conflict: collectors_on_conflict
+    ): collectors
+    "insert data into the table: \"customer\""
+    insert_customer(
+        "the rows to be inserted"
+        objects: [customer_insert_input!]!, 
+        "upsert condition"
+        on_conflict: customer_on_conflict
+    ): customer_mutation_response
+    "insert a single row into the table: \"customer\""
+    insert_customer_one(
+        "the row to be inserted"
+        object: customer_insert_input!, 
+        "upsert condition"
+        on_conflict: customer_on_conflict
+    ): customer
+    "insert data into the table: \"notifications\""
+    insert_notifications(
+        "the rows to be inserted"
+        objects: [notifications_insert_input!]!, 
+        "upsert condition"
+        on_conflict: notifications_on_conflict
+    ): notifications_mutation_response
+    "insert a single row into the table: \"notifications\""
+    insert_notifications_one(
+        "the row to be inserted"
+        object: notifications_insert_input!, 
+        "upsert condition"
+        on_conflict: notifications_on_conflict
+    ): notifications
+    "insert data into the table: \"order\""
+    insert_order(
+        "the rows to be inserted"
+        objects: [order_insert_input!]!, 
+        "upsert condition"
+        on_conflict: order_on_conflict
+    ): order_mutation_response
+    "insert a single row into the table: \"order\""
+    insert_order_one(
+        "the row to be inserted"
+        object: order_insert_input!, 
+        "upsert condition"
+        on_conflict: order_on_conflict
+    ): order
+    "insert data into the table: \"payments\""
+    insert_payments(
+        "the rows to be inserted"
+        objects: [payments_insert_input!]!, 
+        "upsert condition"
+        on_conflict: payments_on_conflict
+    ): payments_mutation_response
+    "insert a single row into the table: \"payments\""
+    insert_payments_one(
+        "the row to be inserted"
+        object: payments_insert_input!, 
+        "upsert condition"
+        on_conflict: payments_on_conflict
+    ): payments
+    "update data of the table: \"admin_panel_user\""
+    update_admin_panel_user(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: admin_panel_user_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: admin_panel_user_set_input, 
+        "filter the rows which have to be updated"
+        where: admin_panel_user_bool_exp!
+    ): admin_panel_user_mutation_response
+    "update single row of the table: \"admin_panel_user\""
+    update_admin_panel_user_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: admin_panel_user_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: admin_panel_user_set_input, 
+        pk_columns: admin_panel_user_pk_columns_input!
+    ): admin_panel_user
+    "update multiples rows of table: \"admin_panel_user\""
+    update_admin_panel_user_many(
+        "updates to execute, in order"
+        updates: [admin_panel_user_updates!]!
+    ): [admin_panel_user_mutation_response]
+    "update data of the table: \"cable_customers_table\""
+    update_cable_customers_table(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_customers_table_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_customers_table_set_input, 
+        "filter the rows which have to be updated"
+        where: cable_customers_table_bool_exp!
+    ): cable_customers_table_mutation_response
+    "update single row of the table: \"cable_customers_table\""
+    update_cable_customers_table_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_customers_table_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_customers_table_set_input, 
+        pk_columns: cable_customers_table_pk_columns_input!
+    ): cable_customers_table
+    "update multiples rows of table: \"cable_customers_table\""
+    update_cable_customers_table_many(
+        "updates to execute, in order"
+        updates: [cable_customers_table_updates!]!
+    ): [cable_customers_table_mutation_response]
+    "update data of the table: \"cable_opr\""
+    update_cable_opr(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_opr_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_opr_set_input, 
+        "filter the rows which have to be updated"
+        where: cable_opr_bool_exp!
+    ): cable_opr_mutation_response
+    "update single row of the table: \"cable_opr\""
+    update_cable_opr_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_opr_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_opr_set_input, 
+        pk_columns: cable_opr_pk_columns_input!
+    ): cable_opr
+    "update multiples rows of table: \"cable_opr\""
+    update_cable_opr_many(
+        "updates to execute, in order"
+        updates: [cable_opr_updates!]!
+    ): [cable_opr_mutation_response]
+    "update data of the table: \"cable_plan\""
+    update_cable_plan(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_plan_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_plan_set_input, 
+        "filter the rows which have to be updated"
+        where: cable_plan_bool_exp!
+    ): cable_plan_mutation_response
+    "update single row of the table: \"cable_plan\""
+    update_cable_plan_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_plan_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_plan_set_input, 
+        pk_columns: cable_plan_pk_columns_input!
+    ): cable_plan
+    "update multiples rows of table: \"cable_plan\""
+    update_cable_plan_many(
+        "updates to execute, in order"
+        updates: [cable_plan_updates!]!
+    ): [cable_plan_mutation_response]
+    "update data of the table: \"cable_subscription_fee\""
+    update_cable_subscription_fee(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_subscription_fee_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_subscription_fee_set_input, 
+        "filter the rows which have to be updated"
+        where: cable_subscription_fee_bool_exp!
+    ): cable_subscription_fee_mutation_response
+    "update single row of the table: \"cable_subscription_fee\""
+    update_cable_subscription_fee_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_subscription_fee_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_subscription_fee_set_input, 
+        pk_columns: cable_subscription_fee_pk_columns_input!
+    ): cable_subscription_fee
+    "update multiples rows of table: \"cable_subscription_fee\""
+    update_cable_subscription_fee_many(
+        "updates to execute, in order"
+        updates: [cable_subscription_fee_updates!]!
+    ): [cable_subscription_fee_mutation_response]
+    "update data of the table: \"cable_subscriptions\""
+    update_cable_subscriptions(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_subscriptions_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_subscriptions_set_input, 
+        "filter the rows which have to be updated"
+        where: cable_subscriptions_bool_exp!
+    ): cable_subscriptions_mutation_response
+    "update single row of the table: \"cable_subscriptions\""
+    update_cable_subscriptions_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: cable_subscriptions_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: cable_subscriptions_set_input, 
+        pk_columns: cable_subscriptions_pk_columns_input!
+    ): cable_subscriptions
+    "update multiples rows of table: \"cable_subscriptions\""
+    update_cable_subscriptions_many(
+        "updates to execute, in order"
+        updates: [cable_subscriptions_updates!]!
+    ): [cable_subscriptions_mutation_response]
+    "update data of the table: \"collectors\""
+    update_collectors(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: collectors_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: collectors_set_input, 
+        "filter the rows which have to be updated"
+        where: collectors_bool_exp!
+    ): collectors_mutation_response
+    "update single row of the table: \"collectors\""
+    update_collectors_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: collectors_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: collectors_set_input, 
+        pk_columns: collectors_pk_columns_input!
+    ): collectors
+    "update multiples rows of table: \"collectors\""
+    update_collectors_many(
+        "updates to execute, in order"
+        updates: [collectors_updates!]!
+    ): [collectors_mutation_response]
+    "update data of the table: \"customer\""
+    update_customer(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: customer_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: customer_set_input, 
+        "filter the rows which have to be updated"
+        where: customer_bool_exp!
+    ): customer_mutation_response
+    "update single row of the table: \"customer\""
+    update_customer_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: customer_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: customer_set_input, 
+        pk_columns: customer_pk_columns_input!
+    ): customer
+    "update multiples rows of table: \"customer\""
+    update_customer_many(
+        "updates to execute, in order"
+        updates: [customer_updates!]!
+    ): [customer_mutation_response]
+    "update data of the table: \"notifications\""
+    update_notifications(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: notifications_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: notifications_set_input, 
+        "filter the rows which have to be updated"
+        where: notifications_bool_exp!
+    ): notifications_mutation_response
+    "update single row of the table: \"notifications\""
+    update_notifications_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: notifications_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: notifications_set_input, 
+        pk_columns: notifications_pk_columns_input!
+    ): notifications
+    "update multiples rows of table: \"notifications\""
+    update_notifications_many(
+        "updates to execute, in order"
+        updates: [notifications_updates!]!
+    ): [notifications_mutation_response]
+    "update data of the table: \"order\""
+    update_order(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: order_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: order_set_input, 
+        "filter the rows which have to be updated"
+        where: order_bool_exp!
+    ): order_mutation_response
+    "update single row of the table: \"order\""
+    update_order_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: order_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: order_set_input, 
+        pk_columns: order_pk_columns_input!
+    ): order
+    "update multiples rows of table: \"order\""
+    update_order_many(
+        "updates to execute, in order"
+        updates: [order_updates!]!
+    ): [order_mutation_response]
+    "update data of the table: \"payments\""
+    update_payments(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: payments_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: payments_set_input, 
+        "filter the rows which have to be updated"
+        where: payments_bool_exp!
+    ): payments_mutation_response
+    "update single row of the table: \"payments\""
+    update_payments_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: payments_inc_input, 
+        "sets the columns of the filtered rows to the given values"
+        _set: payments_set_input, 
+        pk_columns: payments_pk_columns_input!
+    ): payments
+    "update multiples rows of table: \"payments\""
+    update_payments_many(
+        "updates to execute, in order"
+        updates: [payments_updates!]!
+    ): [payments_mutation_response]
+}
+
+"table store notification about payments"
+type notifications {
+    cable_id: Int
+    "An object relationship"
+    cable_opr: cable_opr
+    isRead: Boolean
+    not_id: Int!
+    pay_id: Int!
+    "An object relationship"
+    payment: payments!
+}
+
+"aggregated selection of \"notifications\""
+type notifications_aggregate {
+    aggregate: notifications_aggregate_fields
+    nodes: [notifications!]!
+}
+
+"aggregate fields of \"notifications\""
+type notifications_aggregate_fields {
+    avg: notifications_avg_fields
+    count(columns: [notifications_select_column!], distinct: Boolean): Int!
+    max: notifications_max_fields
+    min: notifications_min_fields
+    stddev: notifications_stddev_fields
+    stddev_pop: notifications_stddev_pop_fields
+    stddev_samp: notifications_stddev_samp_fields
+    sum: notifications_sum_fields
+    var_pop: notifications_var_pop_fields
+    var_samp: notifications_var_samp_fields
+    variance: notifications_variance_fields
+}
+
+"aggregate avg on columns"
+type notifications_avg_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"aggregate max on columns"
+type notifications_max_fields {
+    cable_id: Int
+    not_id: Int
+    pay_id: Int
+}
+
+"aggregate min on columns"
+type notifications_min_fields {
+    cable_id: Int
+    not_id: Int
+    pay_id: Int
+}
+
+"response of any mutation on the table \"notifications\""
+type notifications_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [notifications!]!
+}
+
+"aggregate stddev on columns"
+type notifications_stddev_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type notifications_stddev_pop_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type notifications_stddev_samp_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"aggregate sum on columns"
+type notifications_sum_fields {
+    cable_id: Int
+    not_id: Int
+    pay_id: Int
+}
+
+"aggregate var_pop on columns"
+type notifications_var_pop_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"aggregate var_samp on columns"
+type notifications_var_samp_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"aggregate variance on columns"
+type notifications_variance_fields {
+    cable_id: Float
+    not_id: Float
+    pay_id: Float
+}
+
+"columns and relationships of \"order\""
+type order {
+    "An object relationship"
+    customer: customer
+    customer_id: Int
+    discount_price: String
+    id: Int!
+    order_date: String
+    product: String
+    purchase_price: String
+    transaction_id: String
+}
+
+"aggregated selection of \"order\""
+type order_aggregate {
+    aggregate: order_aggregate_fields
+    nodes: [order!]!
+}
+
+"aggregate fields of \"order\""
+type order_aggregate_fields {
+    avg: order_avg_fields
+    count(columns: [order_select_column!], distinct: Boolean): Int!
+    max: order_max_fields
+    min: order_min_fields
+    stddev: order_stddev_fields
+    stddev_pop: order_stddev_pop_fields
+    stddev_samp: order_stddev_samp_fields
+    sum: order_sum_fields
+    var_pop: order_var_pop_fields
+    var_samp: order_var_samp_fields
+    variance: order_variance_fields
+}
+
+"aggregate avg on columns"
+type order_avg_fields {
+    customer_id: Float
+    id: Float
+}
+
+"aggregate max on columns"
+type order_max_fields {
+    customer_id: Int
+    discount_price: String
+    id: Int
+    order_date: String
+    product: String
+    purchase_price: String
+    transaction_id: String
+}
+
+"aggregate min on columns"
+type order_min_fields {
+    customer_id: Int
+    discount_price: String
+    id: Int
+    order_date: String
+    product: String
+    purchase_price: String
+    transaction_id: String
+}
+
+"response of any mutation on the table \"order\""
+type order_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [order!]!
+}
+
+"aggregate stddev on columns"
+type order_stddev_fields {
+    customer_id: Float
+    id: Float
+}
+
+"aggregate stddev_pop on columns"
+type order_stddev_pop_fields {
+    customer_id: Float
+    id: Float
+}
+
+"aggregate stddev_samp on columns"
+type order_stddev_samp_fields {
+    customer_id: Float
+    id: Float
+}
+
+"aggregate sum on columns"
+type order_sum_fields {
+    customer_id: Int
+    id: Int
+}
+
+"aggregate var_pop on columns"
+type order_var_pop_fields {
+    customer_id: Float
+    id: Float
+}
+
+"aggregate var_samp on columns"
+type order_var_samp_fields {
+    customer_id: Float
+    id: Float
+}
+
+"aggregate variance on columns"
+type order_variance_fields {
+    customer_id: Float
+    id: Float
+}
+
+"table stores payments"
+type payments {
+    "An object relationship"
+    cable_customers_table: cable_customers_table!
+    cable_id: Int!
+    "An object relationship"
+    cable_opr: cable_opr!
+    collected_by: Int
+    "An object relationship"
+    collector: collectors
+    date: timestamptz!
+    id: Int!
+    "An array relationship"
+    notifications(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): [notifications!]!
+    "An aggregate relationship"
+    notifications_aggregate(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): notifications_aggregate!
+    paid_on: date
+    trans_id: Int!
+    user_id: Int!
+}
+
+"aggregated selection of \"payments\""
+type payments_aggregate {
+    aggregate: payments_aggregate_fields
+    nodes: [payments!]!
+}
+
+"aggregate fields of \"payments\""
+type payments_aggregate_fields {
+    avg: payments_avg_fields
+    count(columns: [payments_select_column!], distinct: Boolean): Int!
+    max: payments_max_fields
+    min: payments_min_fields
+    stddev: payments_stddev_fields
+    stddev_pop: payments_stddev_pop_fields
+    stddev_samp: payments_stddev_samp_fields
+    sum: payments_sum_fields
+    var_pop: payments_var_pop_fields
+    var_samp: payments_var_samp_fields
+    variance: payments_variance_fields
+}
+
+"aggregate avg on columns"
+type payments_avg_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+"aggregate max on columns"
+type payments_max_fields {
+    cable_id: Int
+    collected_by: Int
+    date: timestamptz
+    id: Int
+    paid_on: date
+    trans_id: Int
+    user_id: Int
+}
+
+"aggregate min on columns"
+type payments_min_fields {
+    cable_id: Int
+    collected_by: Int
+    date: timestamptz
+    id: Int
+    paid_on: date
+    trans_id: Int
+    user_id: Int
+}
+
+"response of any mutation on the table \"payments\""
+type payments_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [payments!]!
+}
+
+"aggregate stddev on columns"
+type payments_stddev_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+"aggregate stddev_pop on columns"
+type payments_stddev_pop_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+"aggregate stddev_samp on columns"
+type payments_stddev_samp_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+"aggregate sum on columns"
+type payments_sum_fields {
+    cable_id: Int
+    collected_by: Int
+    id: Int
+    trans_id: Int
+    user_id: Int
+}
+
+"aggregate var_pop on columns"
+type payments_var_pop_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+"aggregate var_samp on columns"
+type payments_var_samp_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+"aggregate variance on columns"
+type payments_variance_fields {
+    cable_id: Float
+    collected_by: Float
+    id: Float
+    trans_id: Float
+    user_id: Float
+}
+
+type query_root {
+    "fetch data from the table: \"admin_panel_user\""
+    admin_panel_user(
+        "distinct select on columns"
+        distinct_on: [admin_panel_user_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [admin_panel_user_order_by!], 
+        "filter the rows returned"
+        where: admin_panel_user_bool_exp
+    ): [admin_panel_user!]!
+    "fetch aggregated fields from the table: \"admin_panel_user\""
+    admin_panel_user_aggregate(
+        "distinct select on columns"
+        distinct_on: [admin_panel_user_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [admin_panel_user_order_by!], 
+        "filter the rows returned"
+        where: admin_panel_user_bool_exp
+    ): admin_panel_user_aggregate!
+    "fetch data from the table: \"admin_panel_user\" using primary key columns"
+    admin_panel_user_by_pk(id: Int!): admin_panel_user
+    "fetch data from the table: \"cable_customers_table\""
+    cable_customers_table(
+        "distinct select on columns"
+        distinct_on: [cable_customers_table_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_customers_table_order_by!], 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): [cable_customers_table!]!
+    "fetch aggregated fields from the table: \"cable_customers_table\""
+    cable_customers_table_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_customers_table_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_customers_table_order_by!], 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): cable_customers_table_aggregate!
+    "fetch data from the table: \"cable_customers_table\" using primary key columns"
+    cable_customers_table_by_pk(user_id: Int!): cable_customers_table
+    "fetch data from the table: \"cable_opr\""
+    cable_opr(
+        "distinct select on columns"
+        distinct_on: [cable_opr_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_opr_order_by!], 
+        "filter the rows returned"
+        where: cable_opr_bool_exp
+    ): [cable_opr!]!
+    "fetch aggregated fields from the table: \"cable_opr\""
+    cable_opr_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_opr_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_opr_order_by!], 
+        "filter the rows returned"
+        where: cable_opr_bool_exp
+    ): cable_opr_aggregate!
+    "fetch data from the table: \"cable_opr\" using primary key columns"
+    cable_opr_by_pk(user_id: Int!): cable_opr
+    "fetch data from the table: \"cable_plan\""
+    cable_plan(
+        "distinct select on columns"
+        distinct_on: [cable_plan_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_plan_order_by!], 
+        "filter the rows returned"
+        where: cable_plan_bool_exp
+    ): [cable_plan!]!
+    "fetch aggregated fields from the table: \"cable_plan\""
+    cable_plan_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_plan_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_plan_order_by!], 
+        "filter the rows returned"
+        where: cable_plan_bool_exp
+    ): cable_plan_aggregate!
+    "fetch data from the table: \"cable_plan\" using primary key columns"
+    cable_plan_by_pk(plan_id: Int!): cable_plan
+    "fetch data from the table: \"cable_subscription_fee\""
+    cable_subscription_fee(
+        "distinct select on columns"
+        distinct_on: [cable_subscription_fee_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscription_fee_order_by!], 
+        "filter the rows returned"
+        where: cable_subscription_fee_bool_exp
+    ): [cable_subscription_fee!]!
+    "fetch aggregated fields from the table: \"cable_subscription_fee\""
+    cable_subscription_fee_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_subscription_fee_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscription_fee_order_by!], 
+        "filter the rows returned"
+        where: cable_subscription_fee_bool_exp
+    ): cable_subscription_fee_aggregate!
+    "fetch data from the table: \"cable_subscription_fee\" using primary key columns"
+    cable_subscription_fee_by_pk(id: Int!): cable_subscription_fee
+    "An array relationship"
+    cable_subscriptions(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): [cable_subscriptions!]!
+    "An aggregate relationship"
+    cable_subscriptions_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): cable_subscriptions_aggregate!
+    "fetch data from the table: \"cable_subscriptions\" using primary key columns"
+    cable_subscriptions_by_pk(id: Int!): cable_subscriptions
+    "An array relationship"
+    collectors(
+        "distinct select on columns"
+        distinct_on: [collectors_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [collectors_order_by!], 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): [collectors!]!
+    "An aggregate relationship"
+    collectors_aggregate(
+        "distinct select on columns"
+        distinct_on: [collectors_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [collectors_order_by!], 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): collectors_aggregate!
+    "fetch data from the table: \"collectors\" using primary key columns"
+    collectors_by_pk(collec_id: Int!): collectors
+    "fetch data from the table: \"customer\""
+    customer(
+        "distinct select on columns"
+        distinct_on: [customer_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [customer_order_by!], 
+        "filter the rows returned"
+        where: customer_bool_exp
+    ): [customer!]!
+    "fetch aggregated fields from the table: \"customer\""
+    customer_aggregate(
+        "distinct select on columns"
+        distinct_on: [customer_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [customer_order_by!], 
+        "filter the rows returned"
+        where: customer_bool_exp
+    ): customer_aggregate!
+    "fetch data from the table: \"customer\" using primary key columns"
+    customer_by_pk(id: Int!): customer
+    "An array relationship"
+    notifications(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): [notifications!]!
+    "An aggregate relationship"
+    notifications_aggregate(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): notifications_aggregate!
+    "fetch data from the table: \"notifications\" using primary key columns"
+    notifications_by_pk(not_id: Int!): notifications
+    "fetch data from the table: \"order\""
+    order(
+        "distinct select on columns"
+        distinct_on: [order_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [order_order_by!], 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): [order!]!
+    "fetch aggregated fields from the table: \"order\""
+    order_aggregate(
+        "distinct select on columns"
+        distinct_on: [order_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [order_order_by!], 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): order_aggregate!
+    "fetch data from the table: \"order\" using primary key columns"
+    order_by_pk(id: Int!): order
+    "An array relationship"
+    payments(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): [payments!]!
+    "An aggregate relationship"
+    payments_aggregate(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): payments_aggregate!
+    "fetch data from the table: \"payments\" using primary key columns"
+    payments_by_pk(id: Int!): payments
+    "To send email for forget password"
+    sendEmail(arg1: SampleInput!): SampleOutput
+}
+
+type subscription_root {
+    "fetch data from the table: \"admin_panel_user\""
+    admin_panel_user(
+        "distinct select on columns"
+        distinct_on: [admin_panel_user_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [admin_panel_user_order_by!], 
+        "filter the rows returned"
+        where: admin_panel_user_bool_exp
+    ): [admin_panel_user!]!
+    "fetch aggregated fields from the table: \"admin_panel_user\""
+    admin_panel_user_aggregate(
+        "distinct select on columns"
+        distinct_on: [admin_panel_user_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [admin_panel_user_order_by!], 
+        "filter the rows returned"
+        where: admin_panel_user_bool_exp
+    ): admin_panel_user_aggregate!
+    "fetch data from the table: \"admin_panel_user\" using primary key columns"
+    admin_panel_user_by_pk(id: Int!): admin_panel_user
+    "fetch data from the table in a streaming manner: \"admin_panel_user\""
+    admin_panel_user_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [admin_panel_user_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: admin_panel_user_bool_exp
+    ): [admin_panel_user!]!
+    "fetch data from the table: \"cable_customers_table\""
+    cable_customers_table(
+        "distinct select on columns"
+        distinct_on: [cable_customers_table_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_customers_table_order_by!], 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): [cable_customers_table!]!
+    "fetch aggregated fields from the table: \"cable_customers_table\""
+    cable_customers_table_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_customers_table_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_customers_table_order_by!], 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): cable_customers_table_aggregate!
+    "fetch data from the table: \"cable_customers_table\" using primary key columns"
+    cable_customers_table_by_pk(user_id: Int!): cable_customers_table
+    "fetch data from the table in a streaming manner: \"cable_customers_table\""
+    cable_customers_table_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [cable_customers_table_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: cable_customers_table_bool_exp
+    ): [cable_customers_table!]!
+    "fetch data from the table: \"cable_opr\""
+    cable_opr(
+        "distinct select on columns"
+        distinct_on: [cable_opr_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_opr_order_by!], 
+        "filter the rows returned"
+        where: cable_opr_bool_exp
+    ): [cable_opr!]!
+    "fetch aggregated fields from the table: \"cable_opr\""
+    cable_opr_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_opr_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_opr_order_by!], 
+        "filter the rows returned"
+        where: cable_opr_bool_exp
+    ): cable_opr_aggregate!
+    "fetch data from the table: \"cable_opr\" using primary key columns"
+    cable_opr_by_pk(user_id: Int!): cable_opr
+    "fetch data from the table in a streaming manner: \"cable_opr\""
+    cable_opr_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [cable_opr_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: cable_opr_bool_exp
+    ): [cable_opr!]!
+    "fetch data from the table: \"cable_plan\""
+    cable_plan(
+        "distinct select on columns"
+        distinct_on: [cable_plan_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_plan_order_by!], 
+        "filter the rows returned"
+        where: cable_plan_bool_exp
+    ): [cable_plan!]!
+    "fetch aggregated fields from the table: \"cable_plan\""
+    cable_plan_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_plan_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_plan_order_by!], 
+        "filter the rows returned"
+        where: cable_plan_bool_exp
+    ): cable_plan_aggregate!
+    "fetch data from the table: \"cable_plan\" using primary key columns"
+    cable_plan_by_pk(plan_id: Int!): cable_plan
+    "fetch data from the table in a streaming manner: \"cable_plan\""
+    cable_plan_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [cable_plan_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: cable_plan_bool_exp
+    ): [cable_plan!]!
+    "fetch data from the table: \"cable_subscription_fee\""
+    cable_subscription_fee(
+        "distinct select on columns"
+        distinct_on: [cable_subscription_fee_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscription_fee_order_by!], 
+        "filter the rows returned"
+        where: cable_subscription_fee_bool_exp
+    ): [cable_subscription_fee!]!
+    "fetch aggregated fields from the table: \"cable_subscription_fee\""
+    cable_subscription_fee_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_subscription_fee_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscription_fee_order_by!], 
+        "filter the rows returned"
+        where: cable_subscription_fee_bool_exp
+    ): cable_subscription_fee_aggregate!
+    "fetch data from the table: \"cable_subscription_fee\" using primary key columns"
+    cable_subscription_fee_by_pk(id: Int!): cable_subscription_fee
+    "fetch data from the table in a streaming manner: \"cable_subscription_fee\""
+    cable_subscription_fee_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [cable_subscription_fee_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: cable_subscription_fee_bool_exp
+    ): [cable_subscription_fee!]!
+    "An array relationship"
+    cable_subscriptions(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): [cable_subscriptions!]!
+    "An aggregate relationship"
+    cable_subscriptions_aggregate(
+        "distinct select on columns"
+        distinct_on: [cable_subscriptions_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [cable_subscriptions_order_by!], 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): cable_subscriptions_aggregate!
+    "fetch data from the table: \"cable_subscriptions\" using primary key columns"
+    cable_subscriptions_by_pk(id: Int!): cable_subscriptions
+    "fetch data from the table in a streaming manner: \"cable_subscriptions\""
+    cable_subscriptions_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [cable_subscriptions_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: cable_subscriptions_bool_exp
+    ): [cable_subscriptions!]!
+    "An array relationship"
+    collectors(
+        "distinct select on columns"
+        distinct_on: [collectors_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [collectors_order_by!], 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): [collectors!]!
+    "An aggregate relationship"
+    collectors_aggregate(
+        "distinct select on columns"
+        distinct_on: [collectors_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [collectors_order_by!], 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): collectors_aggregate!
+    "fetch data from the table: \"collectors\" using primary key columns"
+    collectors_by_pk(collec_id: Int!): collectors
+    "fetch data from the table in a streaming manner: \"collectors\""
+    collectors_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [collectors_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: collectors_bool_exp
+    ): [collectors!]!
+    "fetch data from the table: \"customer\""
+    customer(
+        "distinct select on columns"
+        distinct_on: [customer_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [customer_order_by!], 
+        "filter the rows returned"
+        where: customer_bool_exp
+    ): [customer!]!
+    "fetch aggregated fields from the table: \"customer\""
+    customer_aggregate(
+        "distinct select on columns"
+        distinct_on: [customer_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [customer_order_by!], 
+        "filter the rows returned"
+        where: customer_bool_exp
+    ): customer_aggregate!
+    "fetch data from the table: \"customer\" using primary key columns"
+    customer_by_pk(id: Int!): customer
+    "fetch data from the table in a streaming manner: \"customer\""
+    customer_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [customer_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: customer_bool_exp
+    ): [customer!]!
+    "An array relationship"
+    notifications(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): [notifications!]!
+    "An aggregate relationship"
+    notifications_aggregate(
+        "distinct select on columns"
+        distinct_on: [notifications_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [notifications_order_by!], 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): notifications_aggregate!
+    "fetch data from the table: \"notifications\" using primary key columns"
+    notifications_by_pk(not_id: Int!): notifications
+    "fetch data from the table in a streaming manner: \"notifications\""
+    notifications_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [notifications_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: notifications_bool_exp
+    ): [notifications!]!
+    "fetch data from the table: \"order\""
+    order(
+        "distinct select on columns"
+        distinct_on: [order_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [order_order_by!], 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): [order!]!
+    "fetch aggregated fields from the table: \"order\""
+    order_aggregate(
+        "distinct select on columns"
+        distinct_on: [order_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [order_order_by!], 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): order_aggregate!
+    "fetch data from the table: \"order\" using primary key columns"
+    order_by_pk(id: Int!): order
+    "fetch data from the table in a streaming manner: \"order\""
+    order_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [order_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: order_bool_exp
+    ): [order!]!
+    "An array relationship"
+    payments(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): [payments!]!
+    "An aggregate relationship"
+    payments_aggregate(
+        "distinct select on columns"
+        distinct_on: [payments_select_column!], 
+        "limit the number of rows returned"
+        limit: Int, 
+        "skip the first n rows. Use only with order_by"
+        offset: Int, 
+        "sort the rows by one or more columns"
+        order_by: [payments_order_by!], 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): payments_aggregate!
+    "fetch data from the table: \"payments\" using primary key columns"
+    payments_by_pk(id: Int!): payments
+    "fetch data from the table in a streaming manner: \"payments\""
+    payments_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!, 
+        "cursor to stream the results returned by the query"
+        cursor: [payments_stream_cursor_input]!, 
+        "filter the rows returned"
+        where: payments_bool_exp
+    ): [payments!]!
+}
+
+"unique or primary key constraints on table \"admin_panel_user\""
+enum admin_panel_user_constraint {
+    "unique or primary key constraint on columns \"id\""
+    admin_panel_user_pkey
+}
+
+"select columns of table \"admin_panel_user\""
+enum admin_panel_user_select_column {
+    "column name"
+    email
+    "column name"
+    id
+    "column name"
+    pass
+    "column name"
+    ph_no
+    "column name"
+    type
+}
+
+"update columns of table \"admin_panel_user\""
+enum admin_panel_user_update_column {
+    "column name"
+    email
+    "column name"
+    id
+    "column name"
+    pass
+    "column name"
+    ph_no
+    "column name"
+    type
+}
+
+"unique or primary key constraints on table \"cable_customers_table\""
+enum cable_customers_table_constraint {
+    "unique or primary key constraint on columns \"user_id\""
+    cable_customers_table_pkey
+}
+
+"select columns of table \"cable_customers_table\""
+enum cable_customers_table_select_column {
+    "column name"
+    address
+    "column name"
+    belongs_to
+    "column name"
+    desc
+    "column name"
+    joined_on
+    "column name"
+    name
+    "column name"
+    paid_month
+    "column name"
+    phone_number
+    "column name"
+    price
+    "column name"
+    user_id
+}
+
+"update columns of table \"cable_customers_table\""
+enum cable_customers_table_update_column {
+    "column name"
+    address
+    "column name"
+    belongs_to
+    "column name"
+    desc
+    "column name"
+    joined_on
+    "column name"
+    name
+    "column name"
+    paid_month
+    "column name"
+    phone_number
+    "column name"
+    price
+    "column name"
+    user_id
+}
+
+"unique or primary key constraints on table \"cable_opr\""
+enum cable_opr_constraint {
+    "unique or primary key constraint on columns \"phone_no\""
+    cable_opr_phone_no_key
+    "unique or primary key constraint on columns \"user_id\""
+    cable_opr_pkey
+}
+
+"select columns of table \"cable_opr\""
+enum cable_opr_select_column {
+    "column name"
+    address
+    "column name"
+    cable_name
+    "column name"
+    email
+    "column name"
+    isActive
+    "column name"
+    paid_month
+    "column name"
+    password
+    "column name"
+    phone_no
+    "column name"
+    user_id
+}
+
+"update columns of table \"cable_opr\""
+enum cable_opr_update_column {
+    "column name"
+    address
+    "column name"
+    cable_name
+    "column name"
+    email
+    "column name"
+    isActive
+    "column name"
+    paid_month
+    "column name"
+    password
+    "column name"
+    phone_no
+    "column name"
+    user_id
+}
+
+"unique or primary key constraints on table \"cable_plan\""
+enum cable_plan_constraint {
+    "unique or primary key constraint on columns \"plan_id\""
+    cable_plan_pkey
+}
+
+"select columns of table \"cable_plan\""
+enum cable_plan_select_column {
+    "column name"
+    cable_id
+    "column name"
+    desc
+    "column name"
+    fees
+    "column name"
+    name
+    "column name"
+    plan_id
+}
+
+"update columns of table \"cable_plan\""
+enum cable_plan_update_column {
+    "column name"
+    cable_id
+    "column name"
+    desc
+    "column name"
+    fees
+    "column name"
+    name
+    "column name"
+    plan_id
+}
+
+"unique or primary key constraints on table \"cable_subscription_fee\""
+enum cable_subscription_fee_constraint {
+    "unique or primary key constraint on columns \"id\""
+    cable_subscription_fee_pkey
+}
+
+"select columns of table \"cable_subscription_fee\""
+enum cable_subscription_fee_select_column {
+    "column name"
+    date
+    "column name"
+    fee
+    "column name"
+    id
+}
+
+"update columns of table \"cable_subscription_fee\""
+enum cable_subscription_fee_update_column {
+    "column name"
+    date
+    "column name"
+    fee
+    "column name"
+    id
+}
+
+"unique or primary key constraints on table \"cable_subscriptions\""
+enum cable_subscriptions_constraint {
+    "unique or primary key constraint on columns \"id\""
+    cable_subscriptions_id_key
+    "unique or primary key constraint on columns \"id\""
+    cable_subscriptions_pkey
+}
+
+"select columns of table \"cable_subscriptions\""
+enum cable_subscriptions_select_column {
+    "column name"
+    acc_ph_upi
+    "column name"
+    cable_id
+    "column name"
+    date
+    "column name"
+    fee
+    "column name"
+    id
+    "column name"
+    paid_on
+    "column name"
+    trans_id
+    "column name"
+    type
+}
+
+"update columns of table \"cable_subscriptions\""
+enum cable_subscriptions_update_column {
+    "column name"
+    acc_ph_upi
+    "column name"
+    cable_id
+    "column name"
+    date
+    "column name"
+    fee
+    "column name"
+    id
+    "column name"
+    paid_on
+    "column name"
+    trans_id
+    "column name"
+    type
+}
+
+"unique or primary key constraints on table \"collectors\""
+enum collectors_constraint {
+    "unique or primary key constraint on columns \"collec_id\""
+    collectors_pkey
+}
+
+"select columns of table \"collectors\""
+enum collectors_select_column {
+    "column name"
+    address
+    "column name"
+    belongs_to
+    "column name"
+    collec_id
+    "column name"
+    device_token
+    "column name"
+    email
+    "column name"
+    isAdmin
+    "column name"
+    mob_no
+    "column name"
+    name
+    "column name"
+    password
+}
+
+"select \"collectors_aggregate_bool_exp_bool_and_arguments_columns\" columns of table \"collectors\""
+enum collectors_select_column_collectors_aggregate_bool_exp_bool_and_arguments_columns {
+    "column name"
+    isAdmin
+}
+
+"select \"collectors_aggregate_bool_exp_bool_or_arguments_columns\" columns of table \"collectors\""
+enum collectors_select_column_collectors_aggregate_bool_exp_bool_or_arguments_columns {
+    "column name"
+    isAdmin
+}
+
+"update columns of table \"collectors\""
+enum collectors_update_column {
+    "column name"
+    address
+    "column name"
+    belongs_to
+    "column name"
+    collec_id
+    "column name"
+    device_token
+    "column name"
+    email
+    "column name"
+    isAdmin
+    "column name"
+    mob_no
+    "column name"
+    name
+    "column name"
+    password
+}
+
+"ordering argument of a cursor"
+enum cursor_ordering {
+    "ascending ordering of the cursor"
+    ASC
+    "descending ordering of the cursor"
+    DESC
+}
+
+"unique or primary key constraints on table \"customer\""
+enum customer_constraint {
+    "unique or primary key constraint on columns \"id\""
+    customer_pkey
+}
+
+"select columns of table \"customer\""
+enum customer_select_column {
+    "column name"
+    email
+    "column name"
+    first_name
+    "column name"
+    id
+    "column name"
+    ip_address
+    "column name"
+    last_name
+    "column name"
+    phone
+    "column name"
+    username
+}
+
+"update columns of table \"customer\""
+enum customer_update_column {
+    "column name"
+    email
+    "column name"
+    first_name
+    "column name"
+    id
+    "column name"
+    ip_address
+    "column name"
+    last_name
+    "column name"
+    phone
+    "column name"
+    username
+}
+
+"unique or primary key constraints on table \"notifications\""
+enum notifications_constraint {
+    "unique or primary key constraint on columns \"not_id\""
+    notifications_not_id_key
+    "unique or primary key constraint on columns \"not_id\""
+    notifications_pkey
+}
+
+"select columns of table \"notifications\""
+enum notifications_select_column {
+    "column name"
+    cable_id
+    "column name"
+    isRead
+    "column name"
+    not_id
+    "column name"
+    pay_id
+}
+
+"select \"notifications_aggregate_bool_exp_bool_and_arguments_columns\" columns of table \"notifications\""
+enum notifications_select_column_notifications_aggregate_bool_exp_bool_and_arguments_columns {
+    "column name"
+    isRead
+}
+
+"select \"notifications_aggregate_bool_exp_bool_or_arguments_columns\" columns of table \"notifications\""
+enum notifications_select_column_notifications_aggregate_bool_exp_bool_or_arguments_columns {
+    "column name"
+    isRead
+}
+
+"update columns of table \"notifications\""
+enum notifications_update_column {
+    "column name"
+    cable_id
+    "column name"
+    isRead
+    "column name"
+    not_id
+    "column name"
+    pay_id
+}
+
+"column ordering options"
+enum order_by {
+    "in ascending order, nulls last"
+    asc
+    "in ascending order, nulls first"
+    asc_nulls_first
+    "in ascending order, nulls last"
+    asc_nulls_last
+    "in descending order, nulls first"
+    desc
+    "in descending order, nulls first"
+    desc_nulls_first
+    "in descending order, nulls last"
+    desc_nulls_last
+}
+
+"unique or primary key constraints on table \"order\""
+enum order_constraint {
+    "unique or primary key constraint on columns \"id\""
+    order_pkey
+}
+
+"select columns of table \"order\""
+enum order_select_column {
+    "column name"
+    customer_id
+    "column name"
+    discount_price
+    "column name"
+    id
+    "column name"
+    order_date
+    "column name"
+    product
+    "column name"
+    purchase_price
+    "column name"
+    transaction_id
+}
+
+"update columns of table \"order\""
+enum order_update_column {
+    "column name"
+    customer_id
+    "column name"
+    discount_price
+    "column name"
+    id
+    "column name"
+    order_date
+    "column name"
+    product
+    "column name"
+    purchase_price
+    "column name"
+    transaction_id
+}
+
+"unique or primary key constraints on table \"payments\""
+enum payments_constraint {
+    "unique or primary key constraint on columns \"id\""
+    payments_id_key
+    "unique or primary key constraint on columns \"id\""
+    payments_pkey
+}
+
+"select columns of table \"payments\""
+enum payments_select_column {
+    "column name"
+    cable_id
+    "column name"
+    collected_by
+    "column name"
+    date
+    "column name"
+    id
+    "column name"
+    paid_on
+    "column name"
+    trans_id
+    "column name"
+    user_id
+}
+
+"update columns of table \"payments\""
+enum payments_update_column {
+    "column name"
+    cable_id
+    "column name"
+    collected_by
+    "column name"
+    date
+    "column name"
+    id
+    "column name"
+    paid_on
+    "column name"
+    trans_id
+    "column name"
+    user_id
+}
+
+scalar date
+
+scalar timestamptz
+
+"Boolean expression to compare columns of type \"Boolean\". All fields are combined with logical 'AND'."
+input Boolean_comparison_exp {
+    _eq: Boolean
+    _gt: Boolean
+    _gte: Boolean
+    _in: [Boolean!]
+    _is_null: Boolean
+    _lt: Boolean
+    _lte: Boolean
+    _neq: Boolean
+    _nin: [Boolean!]
+}
+
+"Boolean expression to compare columns of type \"Int\". All fields are combined with logical 'AND'."
+input Int_comparison_exp {
+    _eq: Int
+    _gt: Int
+    _gte: Int
+    _in: [Int!]
+    _is_null: Boolean
+    _lt: Int
+    _lte: Int
+    _neq: Int
+    _nin: [Int!]
+}
+
+input SampleInput {
+    email: String!
+    password: String!
+}
+
+"Boolean expression to compare columns of type \"String\". All fields are combined with logical 'AND'."
+input String_comparison_exp {
+    _eq: String
+    _gt: String
+    _gte: String
+    "does the column match the given case-insensitive pattern"
+    _ilike: String
+    _in: [String!]
+    "does the column match the given POSIX regular expression, case insensitive"
+    _iregex: String
+    _is_null: Boolean
+    "does the column match the given pattern"
+    _like: String
+    _lt: String
+    _lte: String
+    _neq: String
+    "does the column NOT match the given case-insensitive pattern"
+    _nilike: String
+    _nin: [String!]
+    "does the column NOT match the given POSIX regular expression, case insensitive"
+    _niregex: String
+    "does the column NOT match the given pattern"
+    _nlike: String
+    "does the column NOT match the given POSIX regular expression, case sensitive"
+    _nregex: String
+    "does the column NOT match the given SQL regular expression"
+    _nsimilar: String
+    "does the column match the given POSIX regular expression, case sensitive"
+    _regex: String
+    "does the column match the given SQL regular expression"
+    _similar: String
+}
+
+"Boolean expression to filter rows from the table \"admin_panel_user\". All fields are combined with a logical 'AND'."
+input admin_panel_user_bool_exp {
+    _and: [admin_panel_user_bool_exp!]
+    _not: admin_panel_user_bool_exp
+    _or: [admin_panel_user_bool_exp!]
+    email: String_comparison_exp
+    id: Int_comparison_exp
+    pass: String_comparison_exp
+    ph_no: String_comparison_exp
+    type: Int_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"admin_panel_user\""
+input admin_panel_user_inc_input {
+    id: Int
+    type: Int
+}
+
+"input type for inserting data into table \"admin_panel_user\""
+input admin_panel_user_insert_input {
+    email: String
+    id: Int
+    pass: String
+    ph_no: String
+    type: Int
+}
+
+"on_conflict condition type for table \"admin_panel_user\""
+input admin_panel_user_on_conflict {
+    constraint: admin_panel_user_constraint!
+    update_columns: [admin_panel_user_update_column!]! = []
+    where: admin_panel_user_bool_exp
+}
+
+"Ordering options when selecting data from \"admin_panel_user\"."
+input admin_panel_user_order_by {
+    email: order_by
+    id: order_by
+    pass: order_by
+    ph_no: order_by
+    type: order_by
+}
+
+"primary key columns input for table: admin_panel_user"
+input admin_panel_user_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"admin_panel_user\""
+input admin_panel_user_set_input {
+    email: String
+    id: Int
+    pass: String
+    ph_no: String
+    type: Int
+}
+
+"Streaming cursor of the table \"admin_panel_user\""
+input admin_panel_user_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: admin_panel_user_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input admin_panel_user_stream_cursor_value_input {
+    email: String
+    id: Int
+    pass: String
+    ph_no: String
+    type: Int
+}
+
+input admin_panel_user_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: admin_panel_user_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: admin_panel_user_set_input
+    "filter the rows which have to be updated"
+    where: admin_panel_user_bool_exp!
+}
+
+input cable_customers_table_aggregate_bool_exp {
+    count: cable_customers_table_aggregate_bool_exp_count
+}
+
+input cable_customers_table_aggregate_bool_exp_count {
+    arguments: [cable_customers_table_select_column!]
+    distinct: Boolean
+    filter: cable_customers_table_bool_exp
+    predicate: Int_comparison_exp!
+}
+
+"order by aggregate values of table \"cable_customers_table\""
+input cable_customers_table_aggregate_order_by {
+    avg: cable_customers_table_avg_order_by
+    count: order_by
+    max: cable_customers_table_max_order_by
+    min: cable_customers_table_min_order_by
+    stddev: cable_customers_table_stddev_order_by
+    stddev_pop: cable_customers_table_stddev_pop_order_by
+    stddev_samp: cable_customers_table_stddev_samp_order_by
+    sum: cable_customers_table_sum_order_by
+    var_pop: cable_customers_table_var_pop_order_by
+    var_samp: cable_customers_table_var_samp_order_by
+    variance: cable_customers_table_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"cable_customers_table\""
+input cable_customers_table_arr_rel_insert_input {
+    data: [cable_customers_table_insert_input!]!
+    "upsert condition"
+    on_conflict: cable_customers_table_on_conflict
+}
+
+"order by avg() on columns of table \"cable_customers_table\""
+input cable_customers_table_avg_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"cable_customers_table\". All fields are combined with a logical 'AND'."
+input cable_customers_table_bool_exp {
+    _and: [cable_customers_table_bool_exp!]
+    _not: cable_customers_table_bool_exp
+    _or: [cable_customers_table_bool_exp!]
+    address: String_comparison_exp
+    belongs_to: Int_comparison_exp
+    cable_opr: cable_opr_bool_exp
+    desc: String_comparison_exp
+    joined_on: timestamptz_comparison_exp
+    name: String_comparison_exp
+    paid_month: timestamptz_comparison_exp
+    payments: payments_bool_exp
+    payments_aggregate: payments_aggregate_bool_exp
+    phone_number: String_comparison_exp
+    price: Int_comparison_exp
+    user_id: Int_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"cable_customers_table\""
+input cable_customers_table_inc_input {
+    belongs_to: Int
+    price: Int
+    user_id: Int
+}
+
+"input type for inserting data into table \"cable_customers_table\""
+input cable_customers_table_insert_input {
+    address: String
+    belongs_to: Int
+    cable_opr: cable_opr_obj_rel_insert_input
+    desc: String
+    joined_on: timestamptz
+    name: String
+    paid_month: timestamptz
+    payments: payments_arr_rel_insert_input
+    phone_number: String
+    price: Int
+    user_id: Int
+}
+
+"order by max() on columns of table \"cable_customers_table\""
+input cable_customers_table_max_order_by {
+    address: order_by
+    belongs_to: order_by
+    desc: order_by
+    joined_on: order_by
+    name: order_by
+    paid_month: order_by
+    phone_number: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"order by min() on columns of table \"cable_customers_table\""
+input cable_customers_table_min_order_by {
+    address: order_by
+    belongs_to: order_by
+    desc: order_by
+    joined_on: order_by
+    name: order_by
+    paid_month: order_by
+    phone_number: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"input type for inserting object relation for remote table \"cable_customers_table\""
+input cable_customers_table_obj_rel_insert_input {
+    data: cable_customers_table_insert_input!
+    "upsert condition"
+    on_conflict: cable_customers_table_on_conflict
+}
+
+"on_conflict condition type for table \"cable_customers_table\""
+input cable_customers_table_on_conflict {
+    constraint: cable_customers_table_constraint!
+    update_columns: [cable_customers_table_update_column!]! = []
+    where: cable_customers_table_bool_exp
+}
+
+"Ordering options when selecting data from \"cable_customers_table\"."
+input cable_customers_table_order_by {
+    address: order_by
+    belongs_to: order_by
+    cable_opr: cable_opr_order_by
+    desc: order_by
+    joined_on: order_by
+    name: order_by
+    paid_month: order_by
+    payments_aggregate: payments_aggregate_order_by
+    phone_number: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"primary key columns input for table: cable_customers_table"
+input cable_customers_table_pk_columns_input {
+    user_id: Int!
+}
+
+"input type for updating data in table \"cable_customers_table\""
+input cable_customers_table_set_input {
+    address: String
+    belongs_to: Int
+    desc: String
+    joined_on: timestamptz
+    name: String
+    paid_month: timestamptz
+    phone_number: String
+    price: Int
+    user_id: Int
+}
+
+"order by stddev() on columns of table \"cable_customers_table\""
+input cable_customers_table_stddev_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"cable_customers_table\""
+input cable_customers_table_stddev_pop_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"cable_customers_table\""
+input cable_customers_table_stddev_samp_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"Streaming cursor of the table \"cable_customers_table\""
+input cable_customers_table_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: cable_customers_table_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input cable_customers_table_stream_cursor_value_input {
+    address: String
+    belongs_to: Int
+    desc: String
+    joined_on: timestamptz
+    name: String
+    paid_month: timestamptz
+    phone_number: String
+    price: Int
+    user_id: Int
+}
+
+"order by sum() on columns of table \"cable_customers_table\""
+input cable_customers_table_sum_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+input cable_customers_table_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: cable_customers_table_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: cable_customers_table_set_input
+    "filter the rows which have to be updated"
+    where: cable_customers_table_bool_exp!
+}
+
+"order by var_pop() on columns of table \"cable_customers_table\""
+input cable_customers_table_var_pop_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"order by var_samp() on columns of table \"cable_customers_table\""
+input cable_customers_table_var_samp_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"order by variance() on columns of table \"cable_customers_table\""
+input cable_customers_table_variance_order_by {
+    belongs_to: order_by
+    price: order_by
+    user_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"cable_opr\". All fields are combined with a logical 'AND'."
+input cable_opr_bool_exp {
+    _and: [cable_opr_bool_exp!]
+    _not: cable_opr_bool_exp
+    _or: [cable_opr_bool_exp!]
+    address: String_comparison_exp
+    cable_customers_tables: cable_customers_table_bool_exp
+    cable_customers_tables_aggregate: cable_customers_table_aggregate_bool_exp
+    cable_name: String_comparison_exp
+    cable_subscriptions: cable_subscriptions_bool_exp
+    cable_subscriptions_aggregate: cable_subscriptions_aggregate_bool_exp
+    collectors: collectors_bool_exp
+    collectors_aggregate: collectors_aggregate_bool_exp
+    email: String_comparison_exp
+    isActive: Boolean_comparison_exp
+    notifications: notifications_bool_exp
+    notifications_aggregate: notifications_aggregate_bool_exp
+    paid_month: timestamptz_comparison_exp
+    password: String_comparison_exp
+    payments: payments_bool_exp
+    payments_aggregate: payments_aggregate_bool_exp
+    phone_no: String_comparison_exp
+    user_id: Int_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"cable_opr\""
+input cable_opr_inc_input {
+    user_id: Int
+}
+
+"input type for inserting data into table \"cable_opr\""
+input cable_opr_insert_input {
+    address: String
+    cable_customers_tables: cable_customers_table_arr_rel_insert_input
+    cable_name: String
+    cable_subscriptions: cable_subscriptions_arr_rel_insert_input
+    collectors: collectors_arr_rel_insert_input
+    email: String
+    isActive: Boolean
+    notifications: notifications_arr_rel_insert_input
+    paid_month: timestamptz
+    password: String
+    payments: payments_arr_rel_insert_input
+    phone_no: String
+    user_id: Int
+}
+
+"input type for inserting object relation for remote table \"cable_opr\""
+input cable_opr_obj_rel_insert_input {
+    data: cable_opr_insert_input!
+    "upsert condition"
+    on_conflict: cable_opr_on_conflict
+}
+
+"on_conflict condition type for table \"cable_opr\""
+input cable_opr_on_conflict {
+    constraint: cable_opr_constraint!
+    update_columns: [cable_opr_update_column!]! = []
+    where: cable_opr_bool_exp
+}
+
+"Ordering options when selecting data from \"cable_opr\"."
+input cable_opr_order_by {
+    address: order_by
+    cable_customers_tables_aggregate: cable_customers_table_aggregate_order_by
+    cable_name: order_by
+    cable_subscriptions_aggregate: cable_subscriptions_aggregate_order_by
+    collectors_aggregate: collectors_aggregate_order_by
+    email: order_by
+    isActive: order_by
+    notifications_aggregate: notifications_aggregate_order_by
+    paid_month: order_by
+    password: order_by
+    payments_aggregate: payments_aggregate_order_by
+    phone_no: order_by
+    user_id: order_by
+}
+
+"primary key columns input for table: cable_opr"
+input cable_opr_pk_columns_input {
+    user_id: Int!
+}
+
+"input type for updating data in table \"cable_opr\""
+input cable_opr_set_input {
+    address: String
+    cable_name: String
+    email: String
+    isActive: Boolean
+    paid_month: timestamptz
+    password: String
+    phone_no: String
+    user_id: Int
+}
+
+"Streaming cursor of the table \"cable_opr\""
+input cable_opr_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: cable_opr_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input cable_opr_stream_cursor_value_input {
+    address: String
+    cable_name: String
+    email: String
+    isActive: Boolean
+    paid_month: timestamptz
+    password: String
+    phone_no: String
+    user_id: Int
+}
+
+input cable_opr_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: cable_opr_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: cable_opr_set_input
+    "filter the rows which have to be updated"
+    where: cable_opr_bool_exp!
+}
+
+"Boolean expression to filter rows from the table \"cable_plan\". All fields are combined with a logical 'AND'."
+input cable_plan_bool_exp {
+    _and: [cable_plan_bool_exp!]
+    _not: cable_plan_bool_exp
+    _or: [cable_plan_bool_exp!]
+    cable_id: Int_comparison_exp
+    desc: String_comparison_exp
+    fees: Int_comparison_exp
+    name: String_comparison_exp
+    plan_id: Int_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"cable_plan\""
+input cable_plan_inc_input {
+    cable_id: Int
+    fees: Int
+    plan_id: Int
+}
+
+"input type for inserting data into table \"cable_plan\""
+input cable_plan_insert_input {
+    cable_id: Int
+    desc: String
+    fees: Int
+    name: String
+    plan_id: Int
+}
+
+"on_conflict condition type for table \"cable_plan\""
+input cable_plan_on_conflict {
+    constraint: cable_plan_constraint!
+    update_columns: [cable_plan_update_column!]! = []
+    where: cable_plan_bool_exp
+}
+
+"Ordering options when selecting data from \"cable_plan\"."
+input cable_plan_order_by {
+    cable_id: order_by
+    desc: order_by
+    fees: order_by
+    name: order_by
+    plan_id: order_by
+}
+
+"primary key columns input for table: cable_plan"
+input cable_plan_pk_columns_input {
+    plan_id: Int!
+}
+
+"input type for updating data in table \"cable_plan\""
+input cable_plan_set_input {
+    cable_id: Int
+    desc: String
+    fees: Int
+    name: String
+    plan_id: Int
+}
+
+"Streaming cursor of the table \"cable_plan\""
+input cable_plan_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: cable_plan_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input cable_plan_stream_cursor_value_input {
+    cable_id: Int
+    desc: String
+    fees: Int
+    name: String
+    plan_id: Int
+}
+
+input cable_plan_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: cable_plan_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: cable_plan_set_input
+    "filter the rows which have to be updated"
+    where: cable_plan_bool_exp!
+}
+
+"Boolean expression to filter rows from the table \"cable_subscription_fee\". All fields are combined with a logical 'AND'."
+input cable_subscription_fee_bool_exp {
+    _and: [cable_subscription_fee_bool_exp!]
+    _not: cable_subscription_fee_bool_exp
+    _or: [cable_subscription_fee_bool_exp!]
+    cable_subscriptions: cable_subscriptions_bool_exp
+    cable_subscriptions_aggregate: cable_subscriptions_aggregate_bool_exp
+    date: date_comparison_exp
+    fee: Int_comparison_exp
+    id: Int_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"cable_subscription_fee\""
+input cable_subscription_fee_inc_input {
+    fee: Int
+    id: Int
+}
+
+"input type for inserting data into table \"cable_subscription_fee\""
+input cable_subscription_fee_insert_input {
+    cable_subscriptions: cable_subscriptions_arr_rel_insert_input
+    date: date
+    fee: Int
+    id: Int
+}
+
+"input type for inserting object relation for remote table \"cable_subscription_fee\""
+input cable_subscription_fee_obj_rel_insert_input {
+    data: cable_subscription_fee_insert_input!
+    "upsert condition"
+    on_conflict: cable_subscription_fee_on_conflict
+}
+
+"on_conflict condition type for table \"cable_subscription_fee\""
+input cable_subscription_fee_on_conflict {
+    constraint: cable_subscription_fee_constraint!
+    update_columns: [cable_subscription_fee_update_column!]! = []
+    where: cable_subscription_fee_bool_exp
+}
+
+"Ordering options when selecting data from \"cable_subscription_fee\"."
+input cable_subscription_fee_order_by {
+    cable_subscriptions_aggregate: cable_subscriptions_aggregate_order_by
+    date: order_by
+    fee: order_by
+    id: order_by
+}
+
+"primary key columns input for table: cable_subscription_fee"
+input cable_subscription_fee_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"cable_subscription_fee\""
+input cable_subscription_fee_set_input {
+    date: date
+    fee: Int
+    id: Int
+}
+
+"Streaming cursor of the table \"cable_subscription_fee\""
+input cable_subscription_fee_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: cable_subscription_fee_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input cable_subscription_fee_stream_cursor_value_input {
+    date: date
+    fee: Int
+    id: Int
+}
+
+input cable_subscription_fee_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: cable_subscription_fee_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: cable_subscription_fee_set_input
+    "filter the rows which have to be updated"
+    where: cable_subscription_fee_bool_exp!
+}
+
+input cable_subscriptions_aggregate_bool_exp {
+    count: cable_subscriptions_aggregate_bool_exp_count
+}
+
+input cable_subscriptions_aggregate_bool_exp_count {
+    arguments: [cable_subscriptions_select_column!]
+    distinct: Boolean
+    filter: cable_subscriptions_bool_exp
+    predicate: Int_comparison_exp!
+}
+
+"order by aggregate values of table \"cable_subscriptions\""
+input cable_subscriptions_aggregate_order_by {
+    avg: cable_subscriptions_avg_order_by
+    count: order_by
+    max: cable_subscriptions_max_order_by
+    min: cable_subscriptions_min_order_by
+    stddev: cable_subscriptions_stddev_order_by
+    stddev_pop: cable_subscriptions_stddev_pop_order_by
+    stddev_samp: cable_subscriptions_stddev_samp_order_by
+    sum: cable_subscriptions_sum_order_by
+    var_pop: cable_subscriptions_var_pop_order_by
+    var_samp: cable_subscriptions_var_samp_order_by
+    variance: cable_subscriptions_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"cable_subscriptions\""
+input cable_subscriptions_arr_rel_insert_input {
+    data: [cable_subscriptions_insert_input!]!
+    "upsert condition"
+    on_conflict: cable_subscriptions_on_conflict
+}
+
+"order by avg() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_avg_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+"Boolean expression to filter rows from the table \"cable_subscriptions\". All fields are combined with a logical 'AND'."
+input cable_subscriptions_bool_exp {
+    _and: [cable_subscriptions_bool_exp!]
+    _not: cable_subscriptions_bool_exp
+    _or: [cable_subscriptions_bool_exp!]
+    acc_ph_upi: String_comparison_exp
+    cable_id: Int_comparison_exp
+    cable_opr: cable_opr_bool_exp
+    cable_subscription_fee: cable_subscription_fee_bool_exp
+    date: timestamptz_comparison_exp
+    fee: Int_comparison_exp
+    id: Int_comparison_exp
+    paid_on: timestamptz_comparison_exp
+    trans_id: String_comparison_exp
+    type: String_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"cable_subscriptions\""
+input cable_subscriptions_inc_input {
+    cable_id: Int
+    fee: Int
+    id: Int
+}
+
+"input type for inserting data into table \"cable_subscriptions\""
+input cable_subscriptions_insert_input {
+    acc_ph_upi: String
+    cable_id: Int
+    cable_opr: cable_opr_obj_rel_insert_input
+    cable_subscription_fee: cable_subscription_fee_obj_rel_insert_input
+    date: timestamptz
+    fee: Int
+    id: Int
+    paid_on: timestamptz
+    trans_id: String
+    type: String
+}
+
+"order by max() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_max_order_by {
+    acc_ph_upi: order_by
+    cable_id: order_by
+    date: order_by
+    fee: order_by
+    id: order_by
+    paid_on: order_by
+    trans_id: order_by
+    type: order_by
+}
+
+"order by min() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_min_order_by {
+    acc_ph_upi: order_by
+    cable_id: order_by
+    date: order_by
+    fee: order_by
+    id: order_by
+    paid_on: order_by
+    trans_id: order_by
+    type: order_by
+}
+
+"on_conflict condition type for table \"cable_subscriptions\""
+input cable_subscriptions_on_conflict {
+    constraint: cable_subscriptions_constraint!
+    update_columns: [cable_subscriptions_update_column!]! = []
+    where: cable_subscriptions_bool_exp
+}
+
+"Ordering options when selecting data from \"cable_subscriptions\"."
+input cable_subscriptions_order_by {
+    acc_ph_upi: order_by
+    cable_id: order_by
+    cable_opr: cable_opr_order_by
+    cable_subscription_fee: cable_subscription_fee_order_by
+    date: order_by
+    fee: order_by
+    id: order_by
+    paid_on: order_by
+    trans_id: order_by
+    type: order_by
+}
+
+"primary key columns input for table: cable_subscriptions"
+input cable_subscriptions_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"cable_subscriptions\""
+input cable_subscriptions_set_input {
+    acc_ph_upi: String
+    cable_id: Int
+    date: timestamptz
+    fee: Int
+    id: Int
+    paid_on: timestamptz
+    trans_id: String
+    type: String
+}
+
+"order by stddev() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_stddev_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+"order by stddev_pop() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_stddev_pop_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+"order by stddev_samp() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_stddev_samp_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+"Streaming cursor of the table \"cable_subscriptions\""
+input cable_subscriptions_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: cable_subscriptions_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input cable_subscriptions_stream_cursor_value_input {
+    acc_ph_upi: String
+    cable_id: Int
+    date: timestamptz
+    fee: Int
+    id: Int
+    paid_on: timestamptz
+    trans_id: String
+    type: String
+}
+
+"order by sum() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_sum_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+input cable_subscriptions_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: cable_subscriptions_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: cable_subscriptions_set_input
+    "filter the rows which have to be updated"
+    where: cable_subscriptions_bool_exp!
+}
+
+"order by var_pop() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_var_pop_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+"order by var_samp() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_var_samp_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+"order by variance() on columns of table \"cable_subscriptions\""
+input cable_subscriptions_variance_order_by {
+    cable_id: order_by
+    fee: order_by
+    id: order_by
+}
+
+input collectors_aggregate_bool_exp {
+    bool_and: collectors_aggregate_bool_exp_bool_and
+    bool_or: collectors_aggregate_bool_exp_bool_or
+    count: collectors_aggregate_bool_exp_count
+}
+
+input collectors_aggregate_bool_exp_bool_and {
+    arguments: collectors_select_column_collectors_aggregate_bool_exp_bool_and_arguments_columns!
+    distinct: Boolean
+    filter: collectors_bool_exp
+    predicate: Boolean_comparison_exp!
+}
+
+input collectors_aggregate_bool_exp_bool_or {
+    arguments: collectors_select_column_collectors_aggregate_bool_exp_bool_or_arguments_columns!
+    distinct: Boolean
+    filter: collectors_bool_exp
+    predicate: Boolean_comparison_exp!
+}
+
+input collectors_aggregate_bool_exp_count {
+    arguments: [collectors_select_column!]
+    distinct: Boolean
+    filter: collectors_bool_exp
+    predicate: Int_comparison_exp!
+}
+
+"order by aggregate values of table \"collectors\""
+input collectors_aggregate_order_by {
+    avg: collectors_avg_order_by
+    count: order_by
+    max: collectors_max_order_by
+    min: collectors_min_order_by
+    stddev: collectors_stddev_order_by
+    stddev_pop: collectors_stddev_pop_order_by
+    stddev_samp: collectors_stddev_samp_order_by
+    sum: collectors_sum_order_by
+    var_pop: collectors_var_pop_order_by
+    var_samp: collectors_var_samp_order_by
+    variance: collectors_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"collectors\""
+input collectors_arr_rel_insert_input {
+    data: [collectors_insert_input!]!
+    "upsert condition"
+    on_conflict: collectors_on_conflict
+}
+
+"order by avg() on columns of table \"collectors\""
+input collectors_avg_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"collectors\". All fields are combined with a logical 'AND'."
+input collectors_bool_exp {
+    _and: [collectors_bool_exp!]
+    _not: collectors_bool_exp
+    _or: [collectors_bool_exp!]
+    address: String_comparison_exp
+    belongs_to: Int_comparison_exp
+    cable_opr: cable_opr_bool_exp
+    collec_id: Int_comparison_exp
+    device_token: String_comparison_exp
+    email: String_comparison_exp
+    isAdmin: Boolean_comparison_exp
+    mob_no: String_comparison_exp
+    name: String_comparison_exp
+    password: String_comparison_exp
+    payments: payments_bool_exp
+    payments_aggregate: payments_aggregate_bool_exp
+}
+
+"input type for incrementing numeric columns in table \"collectors\""
+input collectors_inc_input {
+    belongs_to: Int
+    collec_id: Int
+}
+
+"input type for inserting data into table \"collectors\""
+input collectors_insert_input {
+    address: String
+    belongs_to: Int
+    cable_opr: cable_opr_obj_rel_insert_input
+    collec_id: Int
+    device_token: String
+    email: String
+    isAdmin: Boolean
+    mob_no: String
+    name: String
+    password: String
+    payments: payments_arr_rel_insert_input
+}
+
+"order by max() on columns of table \"collectors\""
+input collectors_max_order_by {
+    address: order_by
+    belongs_to: order_by
+    collec_id: order_by
+    device_token: order_by
+    email: order_by
+    mob_no: order_by
+    name: order_by
+    password: order_by
+}
+
+"order by min() on columns of table \"collectors\""
+input collectors_min_order_by {
+    address: order_by
+    belongs_to: order_by
+    collec_id: order_by
+    device_token: order_by
+    email: order_by
+    mob_no: order_by
+    name: order_by
+    password: order_by
+}
+
+"input type for inserting object relation for remote table \"collectors\""
+input collectors_obj_rel_insert_input {
+    data: collectors_insert_input!
+    "upsert condition"
+    on_conflict: collectors_on_conflict
+}
+
+"on_conflict condition type for table \"collectors\""
+input collectors_on_conflict {
+    constraint: collectors_constraint!
+    update_columns: [collectors_update_column!]! = []
+    where: collectors_bool_exp
+}
+
+"Ordering options when selecting data from \"collectors\"."
+input collectors_order_by {
+    address: order_by
+    belongs_to: order_by
+    cable_opr: cable_opr_order_by
+    collec_id: order_by
+    device_token: order_by
+    email: order_by
+    isAdmin: order_by
+    mob_no: order_by
+    name: order_by
+    password: order_by
+    payments_aggregate: payments_aggregate_order_by
+}
+
+"primary key columns input for table: collectors"
+input collectors_pk_columns_input {
+    collec_id: Int!
+}
+
+"input type for updating data in table \"collectors\""
+input collectors_set_input {
+    address: String
+    belongs_to: Int
+    collec_id: Int
+    device_token: String
+    email: String
+    isAdmin: Boolean
+    mob_no: String
+    name: String
+    password: String
+}
+
+"order by stddev() on columns of table \"collectors\""
+input collectors_stddev_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"collectors\""
+input collectors_stddev_pop_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"collectors\""
+input collectors_stddev_samp_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"Streaming cursor of the table \"collectors\""
+input collectors_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: collectors_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input collectors_stream_cursor_value_input {
+    address: String
+    belongs_to: Int
+    collec_id: Int
+    device_token: String
+    email: String
+    isAdmin: Boolean
+    mob_no: String
+    name: String
+    password: String
+}
+
+"order by sum() on columns of table \"collectors\""
+input collectors_sum_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+input collectors_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: collectors_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: collectors_set_input
+    "filter the rows which have to be updated"
+    where: collectors_bool_exp!
+}
+
+"order by var_pop() on columns of table \"collectors\""
+input collectors_var_pop_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"order by var_samp() on columns of table \"collectors\""
+input collectors_var_samp_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"order by variance() on columns of table \"collectors\""
+input collectors_variance_order_by {
+    belongs_to: order_by
+    collec_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"customer\". All fields are combined with a logical 'AND'."
+input customer_bool_exp {
+    _and: [customer_bool_exp!]
+    _not: customer_bool_exp
+    _or: [customer_bool_exp!]
+    email: String_comparison_exp
+    first_name: String_comparison_exp
+    id: Int_comparison_exp
+    ip_address: String_comparison_exp
+    last_name: String_comparison_exp
+    orders: order_bool_exp
+    orders_aggregate: order_aggregate_bool_exp
+    phone: String_comparison_exp
+    username: String_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"customer\""
+input customer_inc_input {
+    id: Int
+}
+
+"input type for inserting data into table \"customer\""
+input customer_insert_input {
+    email: String
+    first_name: String
+    id: Int
+    ip_address: String
+    last_name: String
+    orders: order_arr_rel_insert_input
+    phone: String
+    username: String
+}
+
+"input type for inserting object relation for remote table \"customer\""
+input customer_obj_rel_insert_input {
+    data: customer_insert_input!
+    "upsert condition"
+    on_conflict: customer_on_conflict
+}
+
+"on_conflict condition type for table \"customer\""
+input customer_on_conflict {
+    constraint: customer_constraint!
+    update_columns: [customer_update_column!]! = []
+    where: customer_bool_exp
+}
+
+"Ordering options when selecting data from \"customer\"."
+input customer_order_by {
+    email: order_by
+    first_name: order_by
+    id: order_by
+    ip_address: order_by
+    last_name: order_by
+    orders_aggregate: order_aggregate_order_by
+    phone: order_by
+    username: order_by
+}
+
+"primary key columns input for table: customer"
+input customer_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"customer\""
+input customer_set_input {
+    email: String
+    first_name: String
+    id: Int
+    ip_address: String
+    last_name: String
+    phone: String
+    username: String
+}
+
+"Streaming cursor of the table \"customer\""
+input customer_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: customer_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input customer_stream_cursor_value_input {
+    email: String
+    first_name: String
+    id: Int
+    ip_address: String
+    last_name: String
+    phone: String
+    username: String
+}
+
+input customer_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: customer_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: customer_set_input
+    "filter the rows which have to be updated"
+    where: customer_bool_exp!
+}
+
+"Boolean expression to compare columns of type \"date\". All fields are combined with logical 'AND'."
+input date_comparison_exp {
+    _eq: date
+    _gt: date
+    _gte: date
+    _in: [date!]
+    _is_null: Boolean
+    _lt: date
+    _lte: date
+    _neq: date
+    _nin: [date!]
+}
+
+input notifications_aggregate_bool_exp {
+    bool_and: notifications_aggregate_bool_exp_bool_and
+    bool_or: notifications_aggregate_bool_exp_bool_or
+    count: notifications_aggregate_bool_exp_count
+}
+
+input notifications_aggregate_bool_exp_bool_and {
+    arguments: notifications_select_column_notifications_aggregate_bool_exp_bool_and_arguments_columns!
+    distinct: Boolean
+    filter: notifications_bool_exp
+    predicate: Boolean_comparison_exp!
+}
+
+input notifications_aggregate_bool_exp_bool_or {
+    arguments: notifications_select_column_notifications_aggregate_bool_exp_bool_or_arguments_columns!
+    distinct: Boolean
+    filter: notifications_bool_exp
+    predicate: Boolean_comparison_exp!
+}
+
+input notifications_aggregate_bool_exp_count {
+    arguments: [notifications_select_column!]
+    distinct: Boolean
+    filter: notifications_bool_exp
+    predicate: Int_comparison_exp!
+}
+
+"order by aggregate values of table \"notifications\""
+input notifications_aggregate_order_by {
+    avg: notifications_avg_order_by
+    count: order_by
+    max: notifications_max_order_by
+    min: notifications_min_order_by
+    stddev: notifications_stddev_order_by
+    stddev_pop: notifications_stddev_pop_order_by
+    stddev_samp: notifications_stddev_samp_order_by
+    sum: notifications_sum_order_by
+    var_pop: notifications_var_pop_order_by
+    var_samp: notifications_var_samp_order_by
+    variance: notifications_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"notifications\""
+input notifications_arr_rel_insert_input {
+    data: [notifications_insert_input!]!
+    "upsert condition"
+    on_conflict: notifications_on_conflict
+}
+
+"order by avg() on columns of table \"notifications\""
+input notifications_avg_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"notifications\". All fields are combined with a logical 'AND'."
+input notifications_bool_exp {
+    _and: [notifications_bool_exp!]
+    _not: notifications_bool_exp
+    _or: [notifications_bool_exp!]
+    cable_id: Int_comparison_exp
+    cable_opr: cable_opr_bool_exp
+    isRead: Boolean_comparison_exp
+    not_id: Int_comparison_exp
+    pay_id: Int_comparison_exp
+    payment: payments_bool_exp
+}
+
+"input type for incrementing numeric columns in table \"notifications\""
+input notifications_inc_input {
+    cable_id: Int
+    not_id: Int
+    pay_id: Int
+}
+
+"input type for inserting data into table \"notifications\""
+input notifications_insert_input {
+    cable_id: Int
+    cable_opr: cable_opr_obj_rel_insert_input
+    isRead: Boolean
+    not_id: Int
+    pay_id: Int
+    payment: payments_obj_rel_insert_input
+}
+
+"order by max() on columns of table \"notifications\""
+input notifications_max_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"order by min() on columns of table \"notifications\""
+input notifications_min_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"on_conflict condition type for table \"notifications\""
+input notifications_on_conflict {
+    constraint: notifications_constraint!
+    update_columns: [notifications_update_column!]! = []
+    where: notifications_bool_exp
+}
+
+"Ordering options when selecting data from \"notifications\"."
+input notifications_order_by {
+    cable_id: order_by
+    cable_opr: cable_opr_order_by
+    isRead: order_by
+    not_id: order_by
+    pay_id: order_by
+    payment: payments_order_by
+}
+
+"primary key columns input for table: notifications"
+input notifications_pk_columns_input {
+    not_id: Int!
+}
+
+"input type for updating data in table \"notifications\""
+input notifications_set_input {
+    cable_id: Int
+    isRead: Boolean
+    not_id: Int
+    pay_id: Int
+}
+
+"order by stddev() on columns of table \"notifications\""
+input notifications_stddev_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"notifications\""
+input notifications_stddev_pop_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"notifications\""
+input notifications_stddev_samp_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"Streaming cursor of the table \"notifications\""
+input notifications_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: notifications_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input notifications_stream_cursor_value_input {
+    cable_id: Int
+    isRead: Boolean
+    not_id: Int
+    pay_id: Int
+}
+
+"order by sum() on columns of table \"notifications\""
+input notifications_sum_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+input notifications_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: notifications_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: notifications_set_input
+    "filter the rows which have to be updated"
+    where: notifications_bool_exp!
+}
+
+"order by var_pop() on columns of table \"notifications\""
+input notifications_var_pop_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"order by var_samp() on columns of table \"notifications\""
+input notifications_var_samp_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+"order by variance() on columns of table \"notifications\""
+input notifications_variance_order_by {
+    cable_id: order_by
+    not_id: order_by
+    pay_id: order_by
+}
+
+input order_aggregate_bool_exp {
+    count: order_aggregate_bool_exp_count
+}
+
+input order_aggregate_bool_exp_count {
+    arguments: [order_select_column!]
+    distinct: Boolean
+    filter: order_bool_exp
+    predicate: Int_comparison_exp!
+}
+
+"order by aggregate values of table \"order\""
+input order_aggregate_order_by {
+    avg: order_avg_order_by
+    count: order_by
+    max: order_max_order_by
+    min: order_min_order_by
+    stddev: order_stddev_order_by
+    stddev_pop: order_stddev_pop_order_by
+    stddev_samp: order_stddev_samp_order_by
+    sum: order_sum_order_by
+    var_pop: order_var_pop_order_by
+    var_samp: order_var_samp_order_by
+    variance: order_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"order\""
+input order_arr_rel_insert_input {
+    data: [order_insert_input!]!
+    "upsert condition"
+    on_conflict: order_on_conflict
+}
+
+"order by avg() on columns of table \"order\""
+input order_avg_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+"Boolean expression to filter rows from the table \"order\". All fields are combined with a logical 'AND'."
+input order_bool_exp {
+    _and: [order_bool_exp!]
+    _not: order_bool_exp
+    _or: [order_bool_exp!]
+    customer: customer_bool_exp
+    customer_id: Int_comparison_exp
+    discount_price: String_comparison_exp
+    id: Int_comparison_exp
+    order_date: String_comparison_exp
+    product: String_comparison_exp
+    purchase_price: String_comparison_exp
+    transaction_id: String_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"order\""
+input order_inc_input {
+    customer_id: Int
+    id: Int
+}
+
+"input type for inserting data into table \"order\""
+input order_insert_input {
+    customer: customer_obj_rel_insert_input
+    customer_id: Int
+    discount_price: String
+    id: Int
+    order_date: String
+    product: String
+    purchase_price: String
+    transaction_id: String
+}
+
+"order by max() on columns of table \"order\""
+input order_max_order_by {
+    customer_id: order_by
+    discount_price: order_by
+    id: order_by
+    order_date: order_by
+    product: order_by
+    purchase_price: order_by
+    transaction_id: order_by
+}
+
+"order by min() on columns of table \"order\""
+input order_min_order_by {
+    customer_id: order_by
+    discount_price: order_by
+    id: order_by
+    order_date: order_by
+    product: order_by
+    purchase_price: order_by
+    transaction_id: order_by
+}
+
+"on_conflict condition type for table \"order\""
+input order_on_conflict {
+    constraint: order_constraint!
+    update_columns: [order_update_column!]! = []
+    where: order_bool_exp
+}
+
+"Ordering options when selecting data from \"order\"."
+input order_order_by {
+    customer: customer_order_by
+    customer_id: order_by
+    discount_price: order_by
+    id: order_by
+    order_date: order_by
+    product: order_by
+    purchase_price: order_by
+    transaction_id: order_by
+}
+
+"primary key columns input for table: order"
+input order_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"order\""
+input order_set_input {
+    customer_id: Int
+    discount_price: String
+    id: Int
+    order_date: String
+    product: String
+    purchase_price: String
+    transaction_id: String
+}
+
+"order by stddev() on columns of table \"order\""
+input order_stddev_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+"order by stddev_pop() on columns of table \"order\""
+input order_stddev_pop_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+"order by stddev_samp() on columns of table \"order\""
+input order_stddev_samp_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+"Streaming cursor of the table \"order\""
+input order_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: order_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input order_stream_cursor_value_input {
+    customer_id: Int
+    discount_price: String
+    id: Int
+    order_date: String
+    product: String
+    purchase_price: String
+    transaction_id: String
+}
+
+"order by sum() on columns of table \"order\""
+input order_sum_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+input order_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: order_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: order_set_input
+    "filter the rows which have to be updated"
+    where: order_bool_exp!
+}
+
+"order by var_pop() on columns of table \"order\""
+input order_var_pop_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+"order by var_samp() on columns of table \"order\""
+input order_var_samp_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+"order by variance() on columns of table \"order\""
+input order_variance_order_by {
+    customer_id: order_by
+    id: order_by
+}
+
+input payments_aggregate_bool_exp {
+    count: payments_aggregate_bool_exp_count
+}
+
+input payments_aggregate_bool_exp_count {
+    arguments: [payments_select_column!]
+    distinct: Boolean
+    filter: payments_bool_exp
+    predicate: Int_comparison_exp!
+}
+
+"order by aggregate values of table \"payments\""
+input payments_aggregate_order_by {
+    avg: payments_avg_order_by
+    count: order_by
+    max: payments_max_order_by
+    min: payments_min_order_by
+    stddev: payments_stddev_order_by
+    stddev_pop: payments_stddev_pop_order_by
+    stddev_samp: payments_stddev_samp_order_by
+    sum: payments_sum_order_by
+    var_pop: payments_var_pop_order_by
+    var_samp: payments_var_samp_order_by
+    variance: payments_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"payments\""
+input payments_arr_rel_insert_input {
+    data: [payments_insert_input!]!
+    "upsert condition"
+    on_conflict: payments_on_conflict
+}
+
+"order by avg() on columns of table \"payments\""
+input payments_avg_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"Boolean expression to filter rows from the table \"payments\". All fields are combined with a logical 'AND'."
+input payments_bool_exp {
+    _and: [payments_bool_exp!]
+    _not: payments_bool_exp
+    _or: [payments_bool_exp!]
+    cable_customers_table: cable_customers_table_bool_exp
+    cable_id: Int_comparison_exp
+    cable_opr: cable_opr_bool_exp
+    collected_by: Int_comparison_exp
+    collector: collectors_bool_exp
+    date: timestamptz_comparison_exp
+    id: Int_comparison_exp
+    notifications: notifications_bool_exp
+    notifications_aggregate: notifications_aggregate_bool_exp
+    paid_on: date_comparison_exp
+    trans_id: Int_comparison_exp
+    user_id: Int_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"payments\""
+input payments_inc_input {
+    cable_id: Int
+    collected_by: Int
+    id: Int
+    trans_id: Int
+    user_id: Int
+}
+
+"input type for inserting data into table \"payments\""
+input payments_insert_input {
+    cable_customers_table: cable_customers_table_obj_rel_insert_input
+    cable_id: Int
+    cable_opr: cable_opr_obj_rel_insert_input
+    collected_by: Int
+    collector: collectors_obj_rel_insert_input
+    date: timestamptz
+    id: Int
+    notifications: notifications_arr_rel_insert_input
+    paid_on: date
+    trans_id: Int
+    user_id: Int
+}
+
+"order by max() on columns of table \"payments\""
+input payments_max_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    date: order_by
+    id: order_by
+    paid_on: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"order by min() on columns of table \"payments\""
+input payments_min_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    date: order_by
+    id: order_by
+    paid_on: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"input type for inserting object relation for remote table \"payments\""
+input payments_obj_rel_insert_input {
+    data: payments_insert_input!
+    "upsert condition"
+    on_conflict: payments_on_conflict
+}
+
+"on_conflict condition type for table \"payments\""
+input payments_on_conflict {
+    constraint: payments_constraint!
+    update_columns: [payments_update_column!]! = []
+    where: payments_bool_exp
+}
+
+"Ordering options when selecting data from \"payments\"."
+input payments_order_by {
+    cable_customers_table: cable_customers_table_order_by
+    cable_id: order_by
+    cable_opr: cable_opr_order_by
+    collected_by: order_by
+    collector: collectors_order_by
+    date: order_by
+    id: order_by
+    notifications_aggregate: notifications_aggregate_order_by
+    paid_on: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"primary key columns input for table: payments"
+input payments_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"payments\""
+input payments_set_input {
+    cable_id: Int
+    collected_by: Int
+    date: timestamptz
+    id: Int
+    paid_on: date
+    trans_id: Int
+    user_id: Int
+}
+
+"order by stddev() on columns of table \"payments\""
+input payments_stddev_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"order by stddev_pop() on columns of table \"payments\""
+input payments_stddev_pop_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"order by stddev_samp() on columns of table \"payments\""
+input payments_stddev_samp_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"Streaming cursor of the table \"payments\""
+input payments_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: payments_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input payments_stream_cursor_value_input {
+    cable_id: Int
+    collected_by: Int
+    date: timestamptz
+    id: Int
+    paid_on: date
+    trans_id: Int
+    user_id: Int
+}
+
+"order by sum() on columns of table \"payments\""
+input payments_sum_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+input payments_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: payments_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: payments_set_input
+    "filter the rows which have to be updated"
+    where: payments_bool_exp!
+}
+
+"order by var_pop() on columns of table \"payments\""
+input payments_var_pop_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"order by var_samp() on columns of table \"payments\""
+input payments_var_samp_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"order by variance() on columns of table \"payments\""
+input payments_variance_order_by {
+    cable_id: order_by
+    collected_by: order_by
+    id: order_by
+    trans_id: order_by
+    user_id: order_by
+}
+
+"Boolean expression to compare columns of type \"timestamptz\". All fields are combined with logical 'AND'."
+input timestamptz_comparison_exp {
+    _eq: timestamptz
+    _gt: timestamptz
+    _gte: timestamptz
+    _in: [timestamptz!]
+    _is_null: Boolean
+    _lt: timestamptz
+    _lte: timestamptz
+    _neq: timestamptz
+    _nin: [timestamptz!]
+}

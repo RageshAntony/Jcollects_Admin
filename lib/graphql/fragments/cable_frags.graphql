@@ -1,0 +1,9 @@
+fragment cableCustomer on cable_customers_table {
+    address
+    belongs_to
+    desc
+    name
+    paid_month
+    phone_number
+    user_id
+}
