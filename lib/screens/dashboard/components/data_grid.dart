@@ -46,8 +46,8 @@ class _DarkModeScreenState extends State<DarkModeScreen> {
       body: Theme(
         data: ThemeData.dark(),
         child: PlutoGrid(
-          columns: columns,
-          rows: rows,
+          columns: columns ?? List.empty(growable: true),
+          rows: rows ?? List.empty(growable: true),
           onChanged: (PlutoGridOnChangedEvent event) {
             print(event);
           },

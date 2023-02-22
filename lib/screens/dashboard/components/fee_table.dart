@@ -48,6 +48,7 @@ class _FeeTableState extends ConsumerState<FeeTable> {
           ),
           SizedBox(
             width: double.infinity,
+            height: 900,
             child: DataTable2(
               showCheckboxColumn: false,
               columnSpacing: defaultPadding,

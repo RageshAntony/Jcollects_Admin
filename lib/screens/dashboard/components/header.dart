@@ -11,8 +11,8 @@ import 'main_controller.dart';
 
 class Header extends HookConsumerWidget {
 
-  final controllerProvider = ChangeNotifierProvider<MenuController>(
-        (ref) => MenuController(),
+  final controllerProvider = ChangeNotifierProvider<DashMenuController>(
+        (ref) => DashMenuController(),
   );
   final GlobalKey<ScaffoldState> scaffoldKey;
 

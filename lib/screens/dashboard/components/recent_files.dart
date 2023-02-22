@@ -45,8 +45,9 @@ class _RecentFilesState extends ConsumerState<RecentFiles> {
             "Cable Operators ",
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          SizedBox(
+          Container(
             width: double.infinity,
+            height: 400,
             child: DataTable2(
               showCheckboxColumn: false,
               columnSpacing: defaultPadding,

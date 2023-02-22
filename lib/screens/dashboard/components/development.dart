@@ -16,16 +16,15 @@ class DummyData {
           if (i == 0)
             return PlutoColumnType.number();
           else if (i == 1)
-            return PlutoColumnType.number(readOnly: true);
+            return PlutoColumnType.number();
           else if (i == 2)
             return PlutoColumnType.text();
           else if (i == 3)
-            return PlutoColumnType.text(readOnly: true);
+            return PlutoColumnType.text();
           else if (i == 4)
             return PlutoColumnType.select(<String>['One', 'Two', 'Three']);
           else if (i == 5)
-            return PlutoColumnType.select(<String>['One', 'Two', 'Three'],
-                readOnly: true);
+            return PlutoColumnType.select(<String>['One', 'Two', 'Three']);
           else if (i == 6)
             return PlutoColumnType.date();
           else if (i == 7)
@@ -34,8 +33,8 @@ class DummyData {
             return PlutoColumnType.text();
         }(i),
         frozen: (int i) {
-          if (i < 1) return PlutoColumnFrozen.left;
-          if (i > columnLength - 2) return PlutoColumnFrozen.right;
+          if (i < 1) return PlutoColumnFrozen.start;
+          if (i > columnLength - 2) return PlutoColumnFrozen.end;
           return PlutoColumnFrozen.none;
         }(i),
       );
